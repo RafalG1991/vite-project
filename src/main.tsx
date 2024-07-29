@@ -1,6 +1,11 @@
+import React from 'react';
 import ReactDOM from 'react-dom/client'
 import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <h1>Hello world</h1>
+  <React.StrictMode>
+    <div className="container" />
+    <label htmlFor="login">Login</label>
+    <input type="text" id="login"/>
+  </React.StrictMode>
 )
