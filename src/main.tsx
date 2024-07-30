@@ -19,7 +19,12 @@ const users = [{
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <ul>
-      {users.map((user) => (<li>{user.name}</li>))}
+      {users.map((user) => (
+        <li key={user.id}>
+          <strong>{user.name}</strong>
+          <span>{user.id}</span>
+        </li>
+      ))}
     </ul>
   </React.StrictMode>
 )
