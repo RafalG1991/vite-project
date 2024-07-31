@@ -7,6 +7,6 @@ import {ManyValues} from "./ManyValues.tsx";
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <Hello name='Marcin' />
-    <ManyValues first={1} second={2} third={3} fourth={4} fifth={5} sixth={6}/>
+    <ManyValues first={1} second={2} third={3} fourth={4} fifth={5} sixth={6} seventh={8}/>
   </React.StrictMode>
 )
