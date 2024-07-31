@@ -9,7 +9,7 @@ const Foo = (props: Props) => {
   return (
     <ul>
       {props.elements.map(el => (
-        <li>{el.id} - {el.value}</li>
+        <li key={el.id}>{el.id} - {el.value}</li>
       ))}
     </ul>
   )
