@@ -5,7 +5,7 @@ const Cart = () => {
   return (
     <table>
       <CartHeader />
-      <tbody></tbody>
+
       <CartSummary />
     </table>
   )
