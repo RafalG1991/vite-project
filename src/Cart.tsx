@@ -1,13 +1,9 @@
+import { CartHeader } from "./CartHeader";
+
 const Cart = () => {
   return (
     <table>
-      <thead>
-        <tr>
-          <th>Przedmiot</th>
-          <th>Ilość</th>
-          <th>Cena</th>
-        </tr>
-      </thead>
+      <CartHeader />
       <tbody></tbody>
     </table>
   )
