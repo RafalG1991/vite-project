@@ -1,9 +1,15 @@
-const CartSingleElement = () => {
+import {CartItem} from "./types.ts";
+
+type Props = {
+  element: CartItem;
+}
+
+const CartSingleElement = ({element}: Props) => {
   return (
     <tr>
-      <td>Jabłko</td>
-      <td>10</td>
-      <td>90 zł</td>
+      <td>{element.name}</td>
+      <td>{element.quantity}</td>
+      <td>{(element.price * element.quantity).toFixed(2)} zł</td>
     </tr>
   )
 }
