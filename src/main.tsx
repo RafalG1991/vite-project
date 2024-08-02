@@ -6,6 +6,6 @@ import {Container} from "./Container.tsx";
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <Container>Lorem Ipsum</Container>
+    <Container title='Dolor sit amet'>Lorem Ipsum</Container>
   </React.StrictMode>
 )
