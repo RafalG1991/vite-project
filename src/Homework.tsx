@@ -23,6 +23,9 @@ const Homework = () => {
 
   return (
     <>
+      <button onClick={() => setName('Pikachu')}>Pikachu</button>
+      <button onClick={() => setName('Bulbazaur')}>Bulbazaur</button>
+      <button onClick={() => setName('Charizard')}>Charizard</button>
       <h1>{pokemon?.name}</h1>
       <p>experience: {pokemon?.baseExperience}</p>
       <p>Abilities:</p>
@@ -31,3 +34,5 @@ const Homework = () => {
     </>
   )
 }
+
+export {Homework};
