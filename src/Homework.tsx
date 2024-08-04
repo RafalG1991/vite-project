@@ -2,7 +2,7 @@ import {useEffect, useState} from "react";
 
 interface Pokemon {
   abilities: {ability: {name: string}}[],
-  baseExperience: string,
+  base_experience: string,
   name: string,
   sprites: {front_default: string},
 }
@@ -23,14 +23,18 @@ const Homework = () => {
 
   return (
     <>
-      <button onClick={() => setName('Pikachu')}>Pikachu</button>
-      <button onClick={() => setName('Bulbazaur')}>Bulbazaur</button>
-      <button onClick={() => setName('Charizard')}>Charizard</button>
+      <button onClick={() => setName('pikachu')}>Pikachu</button>
+      <button onClick={() => setName('bulbasaur')}>Bulbasaur</button>
+      <button onClick={() => setName('charizard')}>Charizard</button>
       <h1>{pokemon?.name}</h1>
-      <p>experience: {pokemon?.baseExperience}</p>
+      <p>experience: {pokemon?.base_experience}</p>
       <p>Abilities:</p>
-      {pokemon?.abilities.map(ab => <p>ab.name</p>)}
-      <img src={pokemon?.sprites.front_default} alt=""/>
+      {pokemon?.abilities ?
+        pokemon?.abilities.map(ab => <p key={ab.ability.name}>{ab.ability.name}</p>)
+      : null}
+      {pokemon?.sprites ?
+        <img src={pokemon?.sprites.front_default} alt=""/>
+      : null}
     </>
   )
 }
