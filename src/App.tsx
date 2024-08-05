@@ -1,7 +1,7 @@
-import {FormEventHandler} from "react";
+import {FormEvent} from "react";
 
 export const App = () => {
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log("submit!");
   }
