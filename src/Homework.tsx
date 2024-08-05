@@ -1,4 +1,5 @@
 import {useEffect, useState} from "react";
+import {useConsoleLog} from "./hooks/useConsoleLog.tsx";
 
 interface Pokemon {
   abilities: {ability: {name: string}}[],
@@ -20,6 +21,8 @@ const Homework = () => {
   useEffect(() => {
     getPokemon(name);
   }, [name]);
+
+  useConsoleLog();
 
   return (
     <>
