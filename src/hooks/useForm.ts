@@ -1,6 +1,6 @@
-import {ChangeEvent, useState} from "react";
+import {useState} from "react";
+import { FormChangeEvent } from "../types/index.ts";
 
-type FormChangeEvent = ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>;
 type UseFormReturn<T> = [T, (e: FormChangeEvent) => void];
 
 const isCheckboxElement = (target: FormChangeEvent['target']): target is HTMLInputElement => {
