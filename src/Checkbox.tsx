@@ -1,19 +1,18 @@
 import {FieldErrors} from "./FieldErrors.tsx";
 import {FormChangeEvent} from "./types/index.ts";
 
-type FieldProps = {
+type CheckProps = {
   name: string;
   errors: string[];
-  value: string;
+  checked: boolean;
   label: string;
-  type: "text" | "password";
   onChange: (e: FormChangeEvent) => void;
 }
 
-export const Field = ({name, errors, value, label, type, onChange}: FieldProps) => {
+export const Checkbox = ({name, errors, checked, label, onChange}: CheckProps) => {
   return <div>
     <label htmlFor={name}>{label}: </label>
-    <input type={type} id={name} name={name} value={value} onChange={onChange}/>
+    <input type="checkbox" id={name} name={name} checked={checked} onChange={onChange}/>
     <FieldErrors errors={errors}/>
   </div>
 }
