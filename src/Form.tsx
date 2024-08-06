@@ -1,6 +1,7 @@
 import {useForm} from "./hooks/useForm.ts";
 import {FormEvent, useState} from "react";
-import {FieldErrors} from "./FieldErrors.tsx";
+import {Field} from "./Field.tsx";
+import {Checkbox} from "./Checkbox.tsx";
 
 type FormValues = {
   login: string;
@@ -30,23 +31,13 @@ export const Form = () => {
     console.log(form);
   }
 
+  const {login,acceptRules,password} = form;
+
   return (
     <form onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor="login">Login: </label>
-        <input type="text" id="login" name="login" value={form.login} onChange={handleChange}/>
-        <FieldErrors errors={errors.login}/>
-      </div>
-      <div>
-        <label htmlFor="password">Password: </label>
-        <input type="password" id="password" name="password" value={form.password} onChange={handleChange}/>
-        <FieldErrors errors={errors.password}/>
-      </div>
-      <div>
-        <label htmlFor="login">Accept the rules</label>
-        <input type="checkbox" id="acceptRules" name="acceptRules" checked={form.acceptRules} onChange={handleChange}/>
-        <FieldErrors errors={errors.acceptRules}/>
-      </div>
+      <Field name="login" label="Login" type="text" onChange={handleChange} value={login} errors={errors.login}/>
+      <Field name="password" label="Password" type="password" onChange={handleChange} value={password} errors={errors.password}/>
+      <Checkbox name="acceptRules" label="I accepted the rules" onChange={handleChange} checked={acceptRules} errors={errors.acceptRules}/>
       <button type="submit">Submit</button>
     </form>
   )
