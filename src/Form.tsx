@@ -1,5 +1,5 @@
 import {useForm} from "./hooks/useForm.ts";
-import {FormEvent} from "react";
+import {FormEvent, useState} from "react";
 
 type FormValues = {
   login: string;
@@ -7,11 +7,21 @@ type FormValues = {
   acceptRules: boolean;
 }
 
+type FormErrors = {
+  [key in keyof FormValues]: string[];
+}
+
 export const Form = () => {
   const [form, handleChange] = useForm<FormValues>({
     login: '',
     password: '',
     acceptRules: false,
+  });
+
+  const [errors, setErrors] = useState<FormErrors>({
+    login: [],
+    password: [],
+    acceptRules: [],
   });
 
   const handleSubmit = (e: FormEvent) => {
