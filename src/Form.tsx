@@ -1,5 +1,5 @@
 import {useForm} from "./hooks/useForm.ts";
-import React, {FormEvent, useState} from "react";
+import {FormEvent, useState} from "react";
 import {FieldErrors} from "./FieldErrors.tsx";
 
 type FormValues = {
