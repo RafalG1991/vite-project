@@ -29,6 +29,30 @@ export const Form = () => {
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     console.log(form);
+
+    const newErrors: FormErrors = {
+      login: [],
+      password: [],
+      acceptRules: [],
+    }
+
+    if(!login) {
+      newErrors.login.push("This field is required!");
+    }
+    if(login.length < 3) {
+      newErrors.login.push("Login must have at least 3 characters!");
+    }
+    if(!password) {
+      newErrors.password.push("This field is required!");
+    }
+    if(password.length < 8) {
+      newErrors.password.push("Password must have at least 8 characters!");
+    }
+    if(!acceptRules) {
+      newErrors.acceptRules.push("Rules must be accepted!");
+    }
+
+    setErrors(newErrors);
   }
 
   const {login,acceptRules,password} = form;
