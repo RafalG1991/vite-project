@@ -2,10 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 
-import {Form} from "./Form.tsx";
+import {RefParent} from "./RefParent.tsx";
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <Form />
+    <RefParent />
   </React.StrictMode>
 )
