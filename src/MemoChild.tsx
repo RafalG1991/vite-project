@@ -1,3 +1,5 @@
+import {memo} from "react";
+
 type PropsType = {
   value: number[];
 }
@@ -9,11 +11,11 @@ const heavyCalculations = () => {
   return 1;
 }
 
-export const MemoChild = ({value}: PropsType) => {
+export const MemoChild = memo(({value}: PropsType) => {
   const calcValue = heavyCalculations();
 
   return <div>
     <p>{value.join()}</p>
     <p>Calc value: {calcValue}</p>
   </div>
-}
+})
