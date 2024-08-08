@@ -1,5 +1,5 @@
 import {ChildWithFunction} from "./ChildWithFunction.tsx";
-import {useEffect, useState} from "react";
+import {useCallback, useEffect, useState} from "react";
 
 export const ParentForCallback = () => {
   const [counter, setCounter] = useState(0);
@@ -14,9 +14,9 @@ export const ParentForCallback = () => {
     }
   }, []);
 
-  const foo = () => {
+  const foo = useCallback(() => {
     console.log("Hello World!");
-  }
+  }, []);
 
   return <div>
     <ChildWithFunction callback={foo} />
