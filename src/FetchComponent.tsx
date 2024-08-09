@@ -14,8 +14,13 @@ export const FetchComponent = () => {
   const getData = async () => {
     try {
       const response = await fetch('http://localhost:3000/posts');
-      const data: Entity[] = await response.json();
-      setEntities(data);
+      if(response.ok) {
+        const data: Entity[] = await response.json();
+        setEntities(data);
+      } else {
+        const error: string = await response.text();
+        setError(error);
+      }
     } catch (e) {
       setError('Error loading data!');
     } finally {
