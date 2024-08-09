@@ -1,35 +1,17 @@
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
+import {useApi} from "./hooks/useApi.ts";
 
 type Entity = {
   id: string;
   title: string;
   views: number;
-}
+}[]
 
 export const FetchComponent = () => {
-  const [entities, setEntities] = useState<Entity[] | null>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
-
-  const getData = async () => {
-    try {
-      const response = await fetch('http://localhost:3000/posts');
-      if(response.ok) {
-        const data: Entity[] = await response.json();
-        setEntities(data);
-      } else {
-        const error: string = await response.text();
-        setError(error);
-      }
-    } catch (e) {
-      setError('Error loading data!');
-    } finally {
-      setLoading(false);
-    }
-  }
+const {error, entities, getData, loading} = useApi<Entity>();
 
   useEffect(() => {
-    getData();
+    getData('posts');
   }, []);
 
   if(loading) return <p>Loading...</p>
