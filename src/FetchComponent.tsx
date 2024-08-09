@@ -9,12 +9,18 @@ type Entity = {
 export const FetchComponent = () => {
   const [entities, setEntities] = useState<Entity[] | null>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
 
   const getData = async () => {
-    const response = await fetch('http://localhost:3000/posts');
-    const data: Entity[] = await response.json();
-    setEntities(data);
-    setLoading(false);
+    try {
+      const response = await fetch('http://localhost:3000/posts');
+      const data: Entity[] = await response.json();
+      setEntities(data);
+    } catch (e) {
+      setError('Error loading data!');
+    } finally {
+      setLoading(false);
+    }
   }
 
   useEffect(() => {
@@ -22,6 +28,7 @@ export const FetchComponent = () => {
   }, []);
 
   if(loading) return <p>Loading...</p>
+  if(error) return <p>{error}</p>
 
   return <ul>
     {entities?.map((el) => <li key={el.id}>{el.title} views: {el.views}</li>)}
