@@ -15,7 +15,9 @@ export const TanstackQueryEx = () => {
     }
   });
 
+  if (!data) return null;
+
   return <ul>
-    {data?.map(el => <li key={el.id}>{el.title} - {el.views}</li>)}
+    {data.map(el => <li key={el.id}>{el.title} - {el.views}</li>)}
   </ul>
 }
