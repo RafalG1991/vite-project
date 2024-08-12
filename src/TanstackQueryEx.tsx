@@ -1,9 +1,7 @@
-import {useQuery} from "@tanstack/react-query";
-
-
+import {useGetPosts} from "./hooks/useGetPosts.ts";
 
 export const TanstackQueryEx = () => {
-
+  const {data} = useGetPosts();
 
   if (!data) return null;
 
