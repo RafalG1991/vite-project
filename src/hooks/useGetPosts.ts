@@ -1,5 +1,11 @@
 import {useQuery} from "@tanstack/react-query";
 
+type Post = {
+  id: string;
+  title: string;
+  views: number;
+}[]
+
 export const useGetPosts = () => {
   const {data} = useQuery<Post>({
     queryKey: ['posts'],
