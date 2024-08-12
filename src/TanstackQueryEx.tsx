@@ -7,13 +7,7 @@ type Post = {
 }[]
 
 export const TanstackQueryEx = () => {
-  const {data} = useQuery<Post>({
-    queryKey: ['posts'],
-    queryFn: async () => {
-      const response = await fetch('http://localhost:3000/posts');
-      return response.json();
-    }
-  });
+
 
   if (!data) return null;
 
