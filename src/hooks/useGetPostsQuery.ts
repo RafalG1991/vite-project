@@ -14,12 +14,16 @@ type PostWithSubposts = {
 }
 
 export const useGetPostsQuery = (postId: string) => {
-  useQuery({
+  const {data} = useQuery({
     queryKey: ['subposts', postId],
     queryFn: async () => {
       const response = await fetch(`http://localhost:3000/posts/${postId}?_embed=subposts`);
       return response.json() as Promise<PostWithSubposts>;
     }
   });
+
+  return {
+    data,
+  }
 
 }
