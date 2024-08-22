@@ -7,7 +7,7 @@ type Post = {
 }[]
 
 export const useGetPosts = () => {
-  const {data} = useQuery<Post>({
+  const {data, refetch} = useQuery<Post>({
     queryKey: ['posts'],
     queryFn: async () => {
       const response = await fetch('http://localhost:3000/posts');
@@ -17,5 +17,6 @@ export const useGetPosts = () => {
 
   return {
     data,
+    refetch,
   }
 }
