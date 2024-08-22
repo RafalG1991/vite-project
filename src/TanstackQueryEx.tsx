@@ -1,11 +1,11 @@
 import {useGetPostsQuery} from "./hooks/useGetPostsQuery.ts";
 
 export const TanstackQueryEx = () => {
-  const {data} = useGetPostsQuery();
+  const {data} = useGetPostsQuery('1');
 
   if (!data) return null;
 
   return <ul>
-    {data.map(el => <li key={el.id}>{el.title} - {el.views}</li>)}
+    <li key={data.id}>{data.title} - {data.views}</li>
   </ul>
 }
