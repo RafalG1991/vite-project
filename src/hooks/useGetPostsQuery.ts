@@ -14,4 +14,8 @@ export const useGetPostsQuery = () => {
       return response.json();
     }
   });
+
+  return {
+    data,
+  }
 }

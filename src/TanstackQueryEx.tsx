@@ -1,7 +1,7 @@
-import {useGetPosts} from "./hooks/useGetPosts.ts";
+import {useGetPostsQuery} from "./hooks/useGetPostsQuery.ts";
 
 export const TanstackQueryEx = () => {
-  const {data} = useGetPosts();
+  const {data} = useGetPostsQuery();
 
   if (!data) return null;
 
