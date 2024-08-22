@@ -4,6 +4,11 @@ type PostWithSubposts = {
   id: string;
   title: string;
   views: number;
+  subposts: {
+    id: string;
+    title: string;
+    views: number;
+  };
 }
 
 export const useGetPostsQuery = (postId: string) => {
