@@ -1,14 +1,16 @@
 import {useQuery} from "@tanstack/react-query";
 
+export type Subpost = {
+  id: string;
+  title: string;
+  views: number;
+}
+
 type PostWithSubposts = {
   id: string;
   title: string;
   views: number;
-  subposts: {
-    id: string;
-    title: string;
-    views: number;
-  }[];
+  subposts: Subpost[];
 }
 
 export const useGetPostsQuery = (postId: string) => {
