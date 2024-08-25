@@ -5,14 +5,14 @@ type PropsWitchChildrenType = {
   children: ReactNode;
 };
 
-const StyledBox = styled.div`
-    background-color: blue;
+const StyledBox = styled.div<{ color: string }>`
+    background-color: ${props => props.color};
     padding: 25px 0;
 `
 
 export const StyledWrapper = ({children}: PropsWitchChildrenType) => {
   return (
-    <StyledBox>
+    <StyledBox color='green'>
       {children}
     </StyledBox>
   )
