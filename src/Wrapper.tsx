@@ -1,4 +1,4 @@
-import {ReactNode} from "react";
+import {ReactNode, useState} from "react";
 import styles from './Wrapper.module.scss';
 import clsx from "clsx";
 
@@ -7,7 +7,13 @@ type PropWithChildren = {
 }
 
 export const Wrapper = ({children}: PropWithChildren) => {
-  return <div className={clsx(styles.wrapper)}>
+  const [isActive, setIsActive] = useState(false);
+
+  const toggleActive = () => {
+    setIsActive(prevState => !prevState);
+  }
+
+  return <div className={clsx(styles.wrapper, {[styles.isActive]: isActive})} onClick={toggleActive}>
     {children}
   </div>
 }
