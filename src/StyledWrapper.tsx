@@ -7,6 +7,7 @@ type PropsWitchChildrenType = {
 
 const StyledBox = styled.div<{ color: string }>`
     background-color: ${props => props.color};
+    color: ${props => props.theme.colors.primary};
     padding: 25px 0;
 `
 
