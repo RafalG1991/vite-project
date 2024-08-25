@@ -1,12 +1,12 @@
 import {ReactNode} from "react";
-import './Wrapper.scss';
+import styles from './Wrapper.module.scss';
 
 type PropWithChildren = {
   children: ReactNode;
 }
 
 export const Wrapper = ({children}: PropWithChildren) => {
-  return <div className="wrapper">
+  return <div className={styles.wrapper}>
     {children}
   </div>
 }
