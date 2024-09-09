@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
-import './index.css';
 
 import {StyledWrapper} from "./StyledWrapper.tsx";
 import {ThemeProvider} from "styled-components";
@@ -10,6 +9,9 @@ import {Home} from "./views/Home.tsx";
 import {AboutUs} from "./views/AboutUs.tsx";
 import {About} from "./views/About.tsx";
 import {AboutCompany} from "./views/AboutCompany.tsx";
+import {MainLayout} from "./views/MainLayout.tsx";
+import {Product} from "./views/Product.tsx";
+import {ProductDetails} from "./views/ProductDetails.tsx";
 
 const queryClient = new QueryClient();
 const theme = {
@@ -21,22 +23,35 @@ const theme = {
 
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <Home />,
-  },
-  {
-    path: "/about",
-    element: <About />,
+    element: <MainLayout />,
     children: [
       {
-        path: "us",
-        element: <AboutUs />,
+        path: "/",
+        element: <Home />,
       },
       {
-        path: "company",
-        element: <AboutCompany />,
+        path: "/about",
+        element: <About />,
+        children: [
+          {
+            path: "us",
+            element: <AboutUs />,
+          },
+          {
+            path: "company",
+            element: <AboutCompany />,
+          },
+        ],
       },
-    ]
+      {
+        path: "/product",
+        element: <Product />,
+      },
+      {
+        path: "/product/details",
+        element: <ProductDetails />,
+      },
+    ],
   },
   ]);
 
@@ -44,10 +59,14 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     {/*<BrowserRouter>*/}
     {/*  <Routes>*/}
-    {/*    <Route path="/" element={<Home />}/>*/}
-    {/*    <Route path="/about">*/}
-    {/*      <Route path="us" element={<AboutUs />}/>*/}
-    {/*      <Route path="company" element={<AboutCompany />}/>*/}
+    {/*    <Route element={<MainLayout />}>*/}
+    {/*      <Route path="/" element={<Home />}/>*/}
+    {/*      <Route path="/about" element={<About />}>*/}
+    {/*        <Route path="us" element={<AboutUs />}/>*/}
+    {/*        <Route path="company" element={<AboutCompany />}/>*/}
+    {/*      </Route>*/}
+    {/*      <Route path="product" element={<Product />}/>*/}
+    {/*      <Route path="product/details" element={<ProductDetails />}/>*/}
     {/*    </Route>*/}
     {/*  </Routes>*/}
     {/*</BrowserRouter>*/}
