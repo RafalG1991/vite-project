@@ -7,7 +7,8 @@ import {StyledWrapper} from "./StyledWrapper.tsx";
 import {ThemeProvider} from "styled-components";
 import {BrowserRouter, createBrowserRouter, Route, RouterProvider, Routes} from "react-router-dom";
 import {Home} from "./views/Home.tsx";
-import {About} from "./views/About.tsx";
+import {AboutUs} from "./views/AboutUs.tsx";
+import {AboutCompany} from "./views/AboutCompany.tsx";
 
 const queryClient = new QueryClient();
 const theme = {
@@ -23,19 +24,23 @@ const router = createBrowserRouter([
     element: <Home />,
   },
   {
-    path: "/about",
-    element: <About />,
+    path: "/about/us",
+    element: <AboutUs />,
+  },
+  {
+    path: "/about/company",
+    element: <AboutCompany />,
   },
   ]);
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />}/>
-        <Route path="/about" element={<About />}/>
-      </Routes>
-    </BrowserRouter>
-    {/*<RouterProvider router={router} />*/}
+    {/*<BrowserRouter>*/}
+    {/*  <Routes>*/}
+    {/*    <Route path="/" element={<Home />}/>*/}
+    {/*    <Route path="/about" element={<AboutUs />}/>*/}
+    {/*  </Routes>*/}
+    {/*</BrowserRouter>*/}
+    <RouterProvider router={router} />
   </React.StrictMode>
 )
