@@ -7,6 +7,7 @@ import {StyledWrapper} from "./StyledWrapper.tsx";
 import {ThemeProvider} from "styled-components";
 import {BrowserRouter, createBrowserRouter, Route, RouterProvider, Routes} from "react-router-dom";
 import {Home} from "./views/Home.tsx";
+import {About} from "./views/About.tsx";
 
 const queryClient = new QueryClient();
 const theme = {
@@ -21,15 +22,20 @@ const router = createBrowserRouter([
     path: "/",
     element: <Home />,
   },
+  {
+    path: "/about",
+    element: <About />,
+  },
   ]);
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    {/*<BrowserRouter>*/}
-    {/*  <Routes>*/}
-    {/*    <Route path="/" element={<Home />}/>*/}
-    {/*  </Routes>*/}
-    {/*</BrowserRouter>*/}
-    <RouterProvider router={router} />
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />}/>
+        <Route path="/about" element={<About />}/>
+      </Routes>
+    </BrowserRouter>
+    {/*<RouterProvider router={router} />*/}
   </React.StrictMode>
 )
