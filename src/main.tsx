@@ -8,6 +8,7 @@ import {ThemeProvider} from "styled-components";
 import {BrowserRouter, createBrowserRouter, Route, RouterProvider, Routes} from "react-router-dom";
 import {Home} from "./views/Home.tsx";
 import {AboutUs} from "./views/AboutUs.tsx";
+import {About} from "./views/About.tsx";
 import {AboutCompany} from "./views/AboutCompany.tsx";
 
 const queryClient = new QueryClient();
@@ -25,6 +26,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/about",
+    element: <About />,
     children: [
       {
         path: "us",
