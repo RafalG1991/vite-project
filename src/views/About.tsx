@@ -6,10 +6,10 @@ export const About = () => {
       <h1>About page</h1>
       <ul>
         <li>
-          <Link to="/about/us">About us</Link>
+          <Link to="us">About us</Link>
         </li>
         <li>
-          <Link to="/about/company">About company</Link>
+          <Link to="company">About company</Link>
         </li>
       </ul>
       <Outlet/>
