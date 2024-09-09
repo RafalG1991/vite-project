@@ -35,12 +35,13 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    {/*<BrowserRouter>*/}
-    {/*  <Routes>*/}
-    {/*    <Route path="/" element={<Home />}/>*/}
-    {/*    <Route path="/about" element={<AboutUs />}/>*/}
-    {/*  </Routes>*/}
-    {/*</BrowserRouter>*/}
-    <RouterProvider router={router} />
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />}/>
+        <Route path="/about/us" element={<AboutUs />}/>
+        <Route path="/about/company" element={<AboutCompany />}/>
+      </Routes>
+    </BrowserRouter>
+    {/*<RouterProvider router={router} />*/}
   </React.StrictMode>
 )
