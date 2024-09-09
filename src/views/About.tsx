@@ -1,10 +1,18 @@
-import {Outlet} from "react-router-dom";
+import {Link, Outlet} from "react-router-dom";
 
 export const About = () => {
   return (
     <div>
       <h1>About page</h1>
-      <Outlet />
+      <ul>
+        <li>
+          <Link to="/about/us">About us</Link>
+        </li>
+        <li>
+          <Link to="/about/company">About company</Link>
+        </li>
+      </ul>
+      <Outlet/>
     </div>
   )
 }
