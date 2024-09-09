@@ -38,8 +38,10 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />}/>
-        <Route path="/about/us" element={<AboutUs />}/>
-        <Route path="/about/company" element={<AboutCompany />}/>
+        <Route path="/about">
+          <Route path="us" element={<AboutUs />}/>
+          <Route path="company" element={<AboutCompany />}/>
+        </Route>
       </Routes>
     </BrowserRouter>
     {/*<RouterProvider router={router} />*/}
