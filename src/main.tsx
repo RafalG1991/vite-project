@@ -24,26 +24,31 @@ const router = createBrowserRouter([
     element: <Home />,
   },
   {
-    path: "/about/us",
-    element: <AboutUs />,
-  },
-  {
-    path: "/about/company",
-    element: <AboutCompany />,
+    path: "/about",
+    children: [
+      {
+        path: "us",
+        element: <AboutUs />,
+      },
+      {
+        path: "company",
+        element: <AboutCompany />,
+      },
+    ]
   },
   ]);
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />}/>
-        <Route path="/about">
-          <Route path="us" element={<AboutUs />}/>
-          <Route path="company" element={<AboutCompany />}/>
-        </Route>
-      </Routes>
-    </BrowserRouter>
-    {/*<RouterProvider router={router} />*/}
+    {/*<BrowserRouter>*/}
+    {/*  <Routes>*/}
+    {/*    <Route path="/" element={<Home />}/>*/}
+    {/*    <Route path="/about">*/}
+    {/*      <Route path="us" element={<AboutUs />}/>*/}
+    {/*      <Route path="company" element={<AboutCompany />}/>*/}
+    {/*    </Route>*/}
+    {/*  </Routes>*/}
+    {/*</BrowserRouter>*/}
+    <RouterProvider router={router} />
   </React.StrictMode>
 )
