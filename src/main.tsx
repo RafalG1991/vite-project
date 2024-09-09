@@ -5,6 +5,7 @@ import './index.css';
 
 import {StyledWrapper} from "./StyledWrapper.tsx";
 import {ThemeProvider} from "styled-components";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
 
 const queryClient = new QueryClient();
 const theme = {
@@ -16,12 +17,10 @@ const theme = {
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <ThemeProvider theme={theme}>
-      <StyledWrapper>
-        <h1>Lorem Ipsum</h1>
-      </StyledWrapper>
-      </ThemeProvider>
-    </QueryClientProvider>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<h1>Hello world</h1>}/>
+      </Routes>
+    </BrowserRouter>
   </React.StrictMode>
 )
