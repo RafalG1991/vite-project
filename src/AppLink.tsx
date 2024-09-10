@@ -8,6 +8,8 @@ type AppLinkProps = {
 
 export const AppLink = ({to, children}: AppLinkProps) => {
   return (
-    <NavLink to={to}>{children}</NavLink>
+    <NavLink end to={to} style={({ isActive }) => ({
+      fontWeight: isActive ? 700 : 300,
+    })}>{children}</NavLink>
   )
 }
