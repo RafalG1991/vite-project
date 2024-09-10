@@ -4,7 +4,7 @@ import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
 
 import {StyledWrapper} from "./StyledWrapper.tsx";
 import {ThemeProvider} from "styled-components";
-import {BrowserRouter, createBrowserRouter, Route, RouterProvider, Routes} from "react-router-dom";
+import {BrowserRouter, createBrowserRouter, Navigate, Route, RouterProvider, Routes} from "react-router-dom";
 import {Home} from "./views/Home.tsx";
 import {AboutUs} from "./views/AboutUs.tsx";
 import {About} from "./views/About.tsx";
@@ -51,25 +51,31 @@ const router = createBrowserRouter([
         path: "/product/details",
         element: <ProductDetails />,
       },
+      {
+        path: "*",
+        element: <Navigate to="/" />,
+      },
     ],
   },
   ]);
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    {/*<BrowserRouter>*/}
-    {/*  <Routes>*/}
-    {/*    <Route element={<MainLayout />}>*/}
-    {/*      <Route path="/" element={<Home />}/>*/}
-    {/*      <Route path="/about" element={<About />}>*/}
-    {/*        <Route path="us" element={<AboutUs />}/>*/}
-    {/*        <Route path="company" element={<AboutCompany />}/>*/}
-    {/*      </Route>*/}
-    {/*      <Route path="product" element={<Product />}/>*/}
-    {/*      <Route path="product/details" element={<ProductDetails />}/>*/}
-    {/*    </Route>*/}
-    {/*  </Routes>*/}
-    {/*</BrowserRouter>*/}
-    <RouterProvider router={router} />
+    <BrowserRouter>
+      <Routes>
+        <Route element={<MainLayout />}>
+          <Route path="/" element={<Home />}/>
+          <Route path="/about" element={<About />}>
+            <Route path="us" element={<AboutUs />}/>
+            <Route path="company" element={<AboutCompany />}/>
+            <Route path="*" element={<Navigate to="." />} />
+          </Route>
+          <Route path="product" element={<Product />}/>
+          <Route path="product/details" element={<ProductDetails />}/>
+        </Route>
+        <Route path="*" element={<Navigate to="/" />} />
+      </Routes>
+    </BrowserRouter>
+    {/*<RouterProvider router={router} />*/}
   </React.StrictMode>
 )
