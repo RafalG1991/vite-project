@@ -73,7 +73,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
           </Route>
           <Route path="product" element={<Product />}/>
           <Route path="product/details" element={<ProductDetails />}/>
-          <Route path="product/:productId" element={<DynamicProductView />}/>
+          <Route path="product/:productId/:additionalParam?" element={<DynamicProductView />}/>
         </Route>
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
