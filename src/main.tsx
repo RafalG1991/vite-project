@@ -12,6 +12,7 @@ import {AboutCompany} from "./views/AboutCompany.tsx";
 import {MainLayout} from "./views/MainLayout.tsx";
 import {Product} from "./views/Product.tsx";
 import {ProductDetails} from "./views/ProductDetails.tsx";
+import {DynamicProductView} from "./views/DynamicProductView.tsx";
 
 const queryClient = new QueryClient();
 const theme = {
@@ -72,6 +73,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
           </Route>
           <Route path="product" element={<Product />}/>
           <Route path="product/details" element={<ProductDetails />}/>
+          <Route path="product/:productId" element={<DynamicProductView />}/>
         </Route>
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
