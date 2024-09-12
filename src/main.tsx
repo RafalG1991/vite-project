@@ -15,6 +15,7 @@ import {ProductDetails} from "./views/ProductDetails.tsx";
 import {DynamicProductView} from "./views/DynamicProductView.tsx";
 import {Payment} from "./views/Payment.tsx";
 import {DataView} from "./views/DataView.tsx";
+import {ErrorView} from "./views/ErrorView.tsx";
 
 const queryClient = new QueryClient();
 const theme = {
@@ -58,12 +59,14 @@ const router = createBrowserRouter([
         path: "/path-with-loader/:id?",
         element: <DataView />,
         loader: async () => {
-          return new Promise<string>(resolve => {
+          return new Promise<string>((resolve, reject) => {
             setTimeout(() => {
-              resolve('Lorem Ipsum')
+              // resolve('Lorem Ipsum')
+              reject();
             }, 5000);
           });
         },
+        errorElement: <ErrorView />,
       },
       {
         path: "*",
