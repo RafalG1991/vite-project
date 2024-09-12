@@ -58,11 +58,11 @@ const router = createBrowserRouter([
       {
         path: "/path-with-loader/:id?",
         element: <DataView />,
-        loader: async () => {
+        loader: async ({request, params}) => {
           return new Promise<string>((resolve, reject) => {
             setTimeout(() => {
-              // resolve('Lorem Ipsum')
-              reject('Error with resolving request');
+              resolve(`Lorem Ipsum - params: ${params.id}`);
+              // reject('Error with resolving request');
             }, 5000);
           });
         },
