@@ -58,7 +58,11 @@ const router = createBrowserRouter([
         path: "/path-with-loader/:id?",
         element: <DataView />,
         loader: async () => {
-          return new Promise<string>(resolve => resolve('Lorem Ipsum'));
+          return new Promise<string>(resolve => {
+            setTimeout(() => {
+              resolve('Lorem Ipsum')
+            }, 5000);
+          });
         },
       },
       {
