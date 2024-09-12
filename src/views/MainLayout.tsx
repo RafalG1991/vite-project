@@ -19,10 +19,13 @@ export const MainLayout = () => {
             <li>
               <AppLink to="product/details">Product details</AppLink>
             </li>
+            <li>
+              <AppLink to="/path-with-loader/:id?">Loader</AppLink>
+            </li>
           </ul>
         </nav>
       </header>
-      <Outlet />
+      <Outlet/>
     </main>
   )
 }

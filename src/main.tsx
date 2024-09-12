@@ -14,6 +14,7 @@ import {Product} from "./views/Product.tsx";
 import {ProductDetails} from "./views/ProductDetails.tsx";
 import {DynamicProductView} from "./views/DynamicProductView.tsx";
 import {Payment} from "./views/Payment.tsx";
+import {DataView} from "./views/DataView.tsx";
 
 const queryClient = new QueryClient();
 const theme = {
@@ -54,6 +55,11 @@ const router = createBrowserRouter([
         element: <ProductDetails />,
       },
       {
+        path: "/path-with-loader/:id?",
+        element: <DataView />,
+        loader: () => 'Lorem Ipsum',
+      },
+      {
         path: "*",
         element: <Navigate to="/" />,
       },
@@ -63,23 +69,23 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route element={<MainLayout />}>
-          <Route path="/" element={<Home />}/>
-          <Route path="/about" element={<About />}>
-            <Route path="us" element={<AboutUs />}/>
-            <Route path="company" element={<AboutCompany />}/>
-            <Route path="*" element={<Navigate to="." />} />
-          </Route>
-          <Route path="product" element={<Product />}/>
-          <Route path="product/details" element={<ProductDetails />}/>
-          <Route path="product/:productId/:additionalParam?" element={<DynamicProductView />}/>
-          <Route path="payment" element={<Payment />}/>
-        </Route>
-        <Route path="*" element={<Navigate to="/" />} />
-      </Routes>
-    </BrowserRouter>
-    {/*<RouterProvider router={router} />*/}
+    {/*<BrowserRouter>*/}
+    {/*  <Routes>*/}
+    {/*    <Route element={<MainLayout />}>*/}
+    {/*      <Route path="/" element={<Home />}/>*/}
+    {/*      <Route path="/about" element={<About />}>*/}
+    {/*        <Route path="us" element={<AboutUs />}/>*/}
+    {/*        <Route path="company" element={<AboutCompany />}/>*/}
+    {/*        <Route path="*" element={<Navigate to="." />} />*/}
+    {/*      </Route>*/}
+    {/*      <Route path="product" element={<Product />}/>*/}
+    {/*      <Route path="product/details" element={<ProductDetails />}/>*/}
+    {/*      <Route path="product/:productId/:additionalParam?" element={<DynamicProductView />}/>*/}
+    {/*      <Route path="payment" element={<Payment />}/>*/}
+    {/*    </Route>*/}
+    {/*    <Route path="*" element={<Navigate to="/" />} />*/}
+    {/*  </Routes>*/}
+    {/*</BrowserRouter>*/}
+    <RouterProvider router={router} />
   </React.StrictMode>
 )
