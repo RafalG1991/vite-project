@@ -62,7 +62,7 @@ const router = createBrowserRouter([
           return new Promise<string>((resolve, reject) => {
             setTimeout(() => {
               // resolve('Lorem Ipsum')
-              reject();
+              reject('Error with resolving request');
             }, 5000);
           });
         },
