@@ -1,7 +1,9 @@
-import {Outlet} from "react-router-dom";
+import {Outlet, useNavigation} from "react-router-dom";
 import {AppLink} from "../AppLink.tsx";
 
 export const MainLayout = () => {
+  const {state} = useNavigation();
+
   return (
     <main>
       <header>
@@ -25,7 +27,7 @@ export const MainLayout = () => {
           </ul>
         </nav>
       </header>
-      <Outlet/>
+      { state === 'loading' ? <p>Loading...</p> : <Outlet/>}
     </main>
   )
 }
