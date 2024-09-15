@@ -15,7 +15,7 @@ import {
 } from "react-router-dom";
 import {Home} from "./views/Home.tsx";
 import {AboutUs} from "./views/AboutUs.tsx";
-import {About} from "./views/About.tsx";
+import About from "./views/About.tsx";
 import {AboutCompany} from "./views/AboutCompany.tsx";
 import {MainLayout} from "./views/MainLayout.tsx";
 import {Product} from "./views/Product.tsx";
@@ -88,7 +88,7 @@ const router2 = createBrowserRouter(
   createRoutesFromElements(
     <Route element={<MainLayout />}>
       <Route path="/" element={<Home />}/>
-      <Route path="payment" element={<Payment />}/>
+      <Route path="/about" element={<About />} />
       <Route path="path-with-loader/:id?" element={<Payment />} loader={() => {
         return 'Lorem ipsum';
       }}/>
