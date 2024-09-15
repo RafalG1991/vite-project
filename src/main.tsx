@@ -25,6 +25,7 @@ import {Payment} from "./views/Payment.tsx";
 import {DataView} from "./views/DataView.tsx";
 import {ErrorView} from "./views/ErrorView.tsx";
 import {aboutLoader} from "./routes/aboutLoader.ts";
+import {Create} from "./views/Create.tsx";
 
 const queryClient = new QueryClient();
 const theme = {
@@ -91,6 +92,14 @@ const router2 = createBrowserRouter(
   createRoutesFromElements(
     <Route element={<MainLayout />}>
       <Route path="/" element={<Home />}/>
+      <Route
+        path="/create"
+        element={<Create />}
+        action={(request) => {
+          console.log('Lorem ipsum', request);
+          return null;
+        }}
+      />
       <Route
         path="/about"
         loader={aboutLoader}
