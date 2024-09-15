@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {lazy, Suspense} from 'react';
 import ReactDOM from 'react-dom/client';
 import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
 
@@ -15,7 +15,7 @@ import {
 } from "react-router-dom";
 import {Home} from "./views/Home.tsx";
 import {AboutUs} from "./views/AboutUs.tsx";
-import About from "./views/About.tsx";
+// import About from "./views/About.tsx";
 import {AboutCompany} from "./views/AboutCompany.tsx";
 import {MainLayout} from "./views/MainLayout.tsx";
 import {Product} from "./views/Product.tsx";
@@ -33,62 +33,64 @@ const theme = {
   }
 };
 
-const router = createBrowserRouter([
-  {
-    element: <MainLayout />,
-    children: [
-      {
-        path: "/",
-        element: <Home />,
-      },
-      {
-        path: "/about",
-        element: <About />,
-        children: [
-          {
-            path: "us",
-            element: <AboutUs />,
-          },
-          {
-            path: "company",
-            element: <AboutCompany />,
-          },
-        ],
-      },
-      {
-        path: "/product",
-        element: <Product />,
-      },
-      {
-        path: "/product/details",
-        element: <ProductDetails />,
-      },
-      {
-        path: "/path-with-loader/:id?",
-        element: <DataView />,
-        loader: async ({request, params}) => {
-          return new Promise<string>((resolve, reject) => {
-            setTimeout(() => {
-              resolve(`Lorem Ipsum - params: ${params.id}`);
-              // reject('Error with resolving request');
-            }, 5000);
-          });
-        },
-        errorElement: <ErrorView />,
-      },
-      {
-        path: "*",
-        element: <Navigate to="/" />,
-      },
-    ],
-  },
-  ]);
+// const router = createBrowserRouter([
+//   {
+//     element: <MainLayout />,
+//     children: [
+//       {
+//         path: "/",
+//         element: <Home />,
+//       },
+//       {
+//         path: "/about",
+//         element: <About />,
+//         children: [
+//           {
+//             path: "us",
+//             element: <AboutUs />,
+//           },
+//           {
+//             path: "company",
+//             element: <AboutCompany />,
+//           },
+//         ],
+//       },
+//       {
+//         path: "/product",
+//         element: <Product />,
+//       },
+//       {
+//         path: "/product/details",
+//         element: <ProductDetails />,
+//       },
+//       {
+//         path: "/path-with-loader/:id?",
+//         element: <DataView />,
+//         loader: async ({request, params}) => {
+//           return new Promise<string>((resolve, reject) => {
+//             setTimeout(() => {
+//               resolve(`Lorem Ipsum - params: ${params.id}`);
+//               // reject('Error with resolving request');
+//             }, 5000);
+//           });
+//         },
+//         errorElement: <ErrorView />,
+//       },
+//       {
+//         path: "*",
+//         element: <Navigate to="/" />,
+//       },
+//     ],
+//   },
+//   ]);
+
+const About = lazy(() => import ("./views/About"));
 
 const router2 = createBrowserRouter(
   createRoutesFromElements(
     <Route element={<MainLayout />}>
       <Route path="/" element={<Home />}/>
-      <Route path="/about" element={<About />} />
+      <Route path="/about" element={<Suspense><About /></Suspense>} />
       <Route path="path-with-loader/:id?" element={<Payment />} loader={() => {
         return 'Lorem ipsum';
       }}/>
