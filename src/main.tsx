@@ -76,8 +76,40 @@ const router = createBrowserRouter([
   },
   ]);
 
+const router2 = createBrowserRouter([
+  {
+    element: <MainLayout />,
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: "/path-with-loader/:id?",
+        element: <DataView />,
+        loader: async ({request, params}) => {
+          return new Promise<string>((resolve, reject) => {
+            setTimeout(() => {
+              resolve(`Lorem Ipsum - params: ${params.id}`);
+              // reject('Error with resolving request');
+            }, 5000);
+          });
+        },
+        errorElement: <ErrorView />,
+      },
+      {
+        path: "*",
+        element: <Navigate to="/" />,
+      },
+    ],
+  },
+]);
+
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
+    <RouterProvider router={router2}>
+
+    </RouterProvider>
     {/*<BrowserRouter>*/}
     {/*  <Routes>*/}
     {/*    <Route element={<MainLayout />}>*/}
@@ -91,10 +123,13 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     {/*      <Route path="product/details" element={<ProductDetails />}/>*/}
     {/*      <Route path="product/:productId/:additionalParam?" element={<DynamicProductView />}/>*/}
     {/*      <Route path="payment" element={<Payment />}/>*/}
+    {/*      <Route path="path-with-loader/:id?" element={<Payment />} loader={() => {*/}
+    {/*        return 'Lorem ipsum';*/}
+    {/*      }}/>*/}
     {/*    </Route>*/}
     {/*    <Route path="*" element={<Navigate to="/" />} />*/}
     {/*  </Routes>*/}
     {/*</BrowserRouter>*/}
-    <RouterProvider router={router} />
+    {/*<RouterProvider router={router} />*/}
   </React.StrictMode>
 )
