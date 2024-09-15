@@ -4,7 +4,15 @@ import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
 
 import {StyledWrapper} from "./StyledWrapper.tsx";
 import {ThemeProvider} from "styled-components";
-import {BrowserRouter, createBrowserRouter, Navigate, Route, RouterProvider, Routes} from "react-router-dom";
+import {
+  BrowserRouter,
+  createBrowserRouter,
+  createRoutesFromElements,
+  Navigate,
+  Route,
+  RouterProvider,
+  Routes
+} from "react-router-dom";
 import {Home} from "./views/Home.tsx";
 import {AboutUs} from "./views/AboutUs.tsx";
 import {About} from "./views/About.tsx";
@@ -76,41 +84,21 @@ const router = createBrowserRouter([
   },
   ]);
 
-const router2 = createBrowserRouter([
-  {
-    element: <MainLayout />,
-    children: [
-      {
-        path: "/",
-        element: <Home />,
-      },
-      {
-        path: "/path-with-loader/:id?",
-        element: <DataView/>,
-        // loader: async ({request, params}) => {
-        //   return new Promise<string>((resolve, reject) => {
-        //     setTimeout(() => {
-        //       resolve(`Lorem Ipsum - params: ${params.id}`);
-        //       // reject('Error with resolving request');
-        //     }, 5000);
-        loader: () => 'Lorem ipsum',
-      },
-      {
-        errorElement: <ErrorView />,
-      },
-      {
-        path: "*",
-        element: <Navigate to="/" />,
-      },
-    ],
-  },
-]);
+const router2 = createBrowserRouter(
+  createRoutesFromElements(
+    <Route element={<MainLayout />}>
+      <Route path="/" element={<Home />}/>
+      <Route path="payment" element={<Payment />}/>
+      <Route path="path-with-loader/:id?" element={<Payment />} loader={() => {
+        return 'Lorem ipsum';
+      }}/>
+    </Route>
+  )
+);
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <RouterProvider router={router2}>
-
-    </RouterProvider>
+    <RouterProvider router={router2} />
     {/*<BrowserRouter>*/}
     {/*  <Routes>*/}
     {/*    <Route element={<MainLayout />}>*/}
