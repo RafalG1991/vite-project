@@ -90,7 +90,7 @@ const router2 = createBrowserRouter(
   createRoutesFromElements(
     <Route element={<MainLayout />}>
       <Route path="/" element={<Home />}/>
-      <Route path="/about" element={<Suspense><About /></Suspense>} />
+      <Route path="/about" element={<About />} />
       <Route path="path-with-loader/:id?" element={<Payment />} loader={() => {
         return 'Lorem ipsum';
       }}/>

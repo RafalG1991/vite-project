@@ -1,5 +1,6 @@
 import {Outlet, useNavigation} from "react-router-dom";
 import {AppLink} from "../AppLink.tsx";
+import {Suspense} from "react";
 
 export const MainLayout = () => {
   // const {state} = useNavigation();
@@ -27,7 +28,9 @@ export const MainLayout = () => {
           </ul>
         </nav>
       </header>
-      <Outlet/>
+      <Suspense fallback="Loading...">
+        <Outlet/>
+      </Suspense>
       {/*{ state === 'loading' ? <p>Loading...</p> : <Outlet/>}*/}
     </main>
   )
