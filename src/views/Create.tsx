@@ -1,3 +1,9 @@
+import {useActionData} from "react-router-dom";
+
 export const Create = () => {
-  return <h1>Create</h1>
+  const data = useActionData();
+
+  if(typeof data !== 'string') return <p>Not correct data!</p>
+
+  return <h1>Data: {data}</h1>
 }

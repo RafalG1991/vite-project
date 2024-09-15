@@ -98,7 +98,7 @@ const router2 = createBrowserRouter(
         action={async ({request}) => {
           const data = await request.formData();
           console.log('Lorem ipsum', data.get('title'));
-          return null;
+          return data.get('title');
         }}
       />
       <Route
