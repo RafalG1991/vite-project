@@ -24,6 +24,7 @@ import {DynamicProductView} from "./views/DynamicProductView.tsx";
 import {Payment} from "./views/Payment.tsx";
 import {DataView} from "./views/DataView.tsx";
 import {ErrorView} from "./views/ErrorView.tsx";
+import {aboutLoader} from "./routes/aboutLoader.ts";
 
 const queryClient = new QueryClient();
 const theme = {
@@ -90,7 +91,11 @@ const router2 = createBrowserRouter(
   createRoutesFromElements(
     <Route element={<MainLayout />}>
       <Route path="/" element={<Home />}/>
-      <Route path="/about" element={<About />} />
+      <Route
+        path="/about"
+        loader={aboutLoader}
+        lazy={() => import('./routes/About')}
+      />
       <Route path="path-with-loader/:id?" element={<Payment />} loader={() => {
         return 'Lorem ipsum';
       }}/>
