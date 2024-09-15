@@ -1,9 +1,5 @@
 import {Link, Outlet} from "react-router-dom";
 
-export const loader = async () => {
-  return fetch('https://api.ipify.org?format=json');
-}
-
 export const Component = () => {
   return (
     <div>
