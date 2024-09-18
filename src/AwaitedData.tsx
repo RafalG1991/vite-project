@@ -1,11 +1,19 @@
-import {useLoaderData} from "react-router-dom";
+import {Await, useLoaderData} from "react-router-dom";
+import {Suspense} from "react";
 
 export const AwaitedData = () => {
-  const data = useLoaderData() as Promise<string>;
+  const { dataPromise } = useLoaderData() as { dataPromise: Promise<string> };
 
-  console.log("Awaited data", data);
+  console.log("Awaited data", dataPromise);
 
   return (
-    <h1>Awaited data</h1>
+    <div>
+      <h1>Awaited data</h1>
+      <Suspense fallback="Loading awaited data...">
+        <Await resolve={dataPromise}>
+          {data => <p>{data}</p>}
+        </Await>
+      </Suspense>
+    </div>
   )
 }
