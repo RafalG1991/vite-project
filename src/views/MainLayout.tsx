@@ -25,6 +25,9 @@ export const MainLayout = () => {
             <li>
               <AppLink to="/path-with-loader/:id?">Loader</AppLink>
             </li>
+            <li>
+              <AppLink to="awaited">Awaited</AppLink>
+            </li>
           </ul>
         </nav>
       </header>
