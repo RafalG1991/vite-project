@@ -27,6 +27,7 @@ import {ErrorView} from "./views/ErrorView.tsx";
 import {aboutLoader} from "./routes/aboutLoader.ts";
 import {Create} from "./views/Create.tsx";
 import {AwaitedData} from "./AwaitedData.tsx";
+import {fakeLoader} from "./loaders/fakeLoader.ts";
 
 const queryClient = new QueryClient();
 const theme = {
@@ -113,6 +114,7 @@ const router2 = createBrowserRouter(
       <Route
         path="awaited"
         element={<AwaitedData />}
+        loader={fakeLoader}
       />
     </Route>
   )
