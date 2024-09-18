@@ -29,6 +29,7 @@ import {Create} from "./views/Create.tsx";
 import {AwaitedData} from "./AwaitedData.tsx";
 import {fakeLoader} from "./loaders/fakeLoader.ts";
 import {TasksView} from "./views/TasksView.tsx";
+import {tasksLoader} from "./loaders/tasksLoader.ts";
 
 const queryClient = new QueryClient();
 const theme = {
@@ -128,6 +129,7 @@ const router3 = createBrowserRouter([
       {
         path: "/",
         element: <TasksView />,
+        loader: tasksLoader,
       },
       ],
   }
