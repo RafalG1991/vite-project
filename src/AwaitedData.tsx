@@ -1,7 +1,7 @@
 import {useLoaderData} from "react-router-dom";
 
 export const AwaitedData = () => {
-  const data = useLoaderData();
+  const data = useLoaderData() as Promise<string>;
 
   console.log("Awaited data", data);
 
