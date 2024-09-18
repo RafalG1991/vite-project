@@ -1,16 +1,9 @@
 {
-  "posts": [
-    { "id": "1", "title": "a title", "views": 100 },
-    { "id": "2", "title": "another title", "views": 200 }
-  ],
-  "subposts": [
-    { "postId": "1", "title": "a title", "views": 100 },
-    { "postId": "2", "title": "another title", "views": 200 }
-  ],
-  "books": [
-    { "id": "1", "title": "Pan Tadeusz"},
-    { "id": "2", "title": "Potop"},
-    { "id": "3", "title": "Ogniem i Mieczem"},
-    { "id": "4", "title": "Pan Wołodyjowski"}
+  "tasks": [
+    {
+      "id": 1,
+      "title": "Lorem Ipsum",
+      "description": "Dolor sit amet"
+    }
   ]
 }
