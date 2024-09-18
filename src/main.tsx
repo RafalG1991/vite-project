@@ -26,6 +26,7 @@ import {DataView} from "./views/DataView.tsx";
 import {ErrorView} from "./views/ErrorView.tsx";
 import {aboutLoader} from "./routes/aboutLoader.ts";
 import {Create} from "./views/Create.tsx";
+import {AwaitedData} from "./AwaitedData.tsx";
 
 const queryClient = new QueryClient();
 const theme = {
@@ -109,6 +110,10 @@ const router2 = createBrowserRouter(
       <Route path="path-with-loader/:id?" element={<Payment />} loader={() => {
         return 'Lorem ipsum';
       }}/>
+      <Route
+        path="awaited"
+        element={<AwaitedData />}
+      />
     </Route>
   )
 );
