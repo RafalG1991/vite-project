@@ -28,6 +28,7 @@ import {aboutLoader} from "./routes/aboutLoader.ts";
 import {Create} from "./views/Create.tsx";
 import {AwaitedData} from "./AwaitedData.tsx";
 import {fakeLoader} from "./loaders/fakeLoader.ts";
+import {TasksView} from "./views/TasksView.tsx";
 
 const queryClient = new QueryClient();
 const theme = {
@@ -120,9 +121,21 @@ const router2 = createBrowserRouter(
   )
 );
 
+const router3 = createBrowserRouter([
+  {
+    element: <MainLayout />,
+    children: [
+      {
+        path: "/",
+        element: <TasksView />,
+      },
+      ],
+  }
+  ]);
+
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <RouterProvider router={router2} />
+    <RouterProvider router={router3} />
     {/*<BrowserRouter>*/}
     {/*  <Routes>*/}
     {/*    <Route element={<MainLayout />}>*/}
