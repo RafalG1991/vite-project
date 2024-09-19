@@ -3,5 +3,11 @@ export const AddTaskAction = async ({ request }: {request: Request}) => {
   const title = formData.get('title');
   const description = formData.get('description');
 
-  return fetch('http://localhost:3000/tasks');
+  return fetch('http://localhost:3000/tasks', {
+    method: 'POST',
+    body: JSON.stringify({
+      title,
+      description,
+    }),
+  });
 }
