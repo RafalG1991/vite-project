@@ -11,22 +11,7 @@ export const MainLayout = () => {
         <nav>
           <ul>
             <li>
-              <AppLink to="about/us">About us</AppLink>
-            </li>
-            <li>
-              <AppLink to="about/company">About company</AppLink>
-            </li>
-            <li>
-              <AppLink to="product">Product</AppLink>
-            </li>
-            <li>
-              <AppLink to="product/details">Product details</AppLink>
-            </li>
-            <li>
-              <AppLink to="/path-with-loader/:id?">Loader</AppLink>
-            </li>
-            <li>
-              <AppLink to="awaited">Awaited</AppLink>
+              <AppLink to="/">Tasks</AppLink>
             </li>
           </ul>
         </nav>
