@@ -13,6 +13,9 @@ export const MainLayout = () => {
             <li>
               <AppLink to="/">Tasks</AppLink>
             </li>
+            <li>
+              <AppLink to="/create">Create task</AppLink>
+            </li>
           </ul>
         </nav>
       </header>
