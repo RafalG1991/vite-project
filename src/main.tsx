@@ -32,6 +32,7 @@ import {TasksView} from "./views/TasksView.tsx";
 import {tasksLoader} from "./loaders/tasksLoader.ts";
 import {SingleTaskView} from "./views/SingleTaskView.tsx";
 import {taskLoader} from "./loaders/taskLoader.ts";
+import {AddTaskView} from "./views/AddTaskView.tsx";
 
 const queryClient = new QueryClient();
 const theme = {
@@ -132,6 +133,9 @@ const router3 = createBrowserRouter([
         path: "/",
         element: <TasksView />,
         loader: tasksLoader,
+      },{
+        path: "create",
+        element: <AddTaskView />,
       }, {
         path: ":id",
         element: <SingleTaskView />,
