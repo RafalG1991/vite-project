@@ -10,7 +10,7 @@ export const SingleTaskView = () => {
       id,
     }, {
       method: "DELETE",
-      action: "/",
+      action: "./",
     });
   }
 
