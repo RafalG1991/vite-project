@@ -34,6 +34,7 @@ import {SingleTaskView} from "./views/SingleTaskView.tsx";
 import {taskLoader} from "./loaders/taskLoader.ts";
 import {AddTaskView} from "./views/AddTaskView.tsx";
 import {AddTaskAction} from "./actions/addTask.ts";
+import {deleteTaskAction} from "./actions/deleteTask.ts";
 
 const queryClient = new QueryClient();
 const theme = {
@@ -142,6 +143,7 @@ const router3 = createBrowserRouter([
         path: ":id",
         element: <SingleTaskView />,
         loader: taskLoader,
+        action: deleteTaskAction,
       }
       ],
   }
