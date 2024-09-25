@@ -1,13 +1,13 @@
 import {Outlet, createRootRoute, Link, useNavigate} from '@tanstack/react-router'
 import { Route as postsRoute} from './posts'
-import {useEffect} from "react";
+// import {useEffect} from "react";
 
 const RootComponent = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
-  useEffect(() => {
-    navigate({ to: '/posts'});
-  }, []);
+  // useEffect(() => {
+  //   navigate({ to: '/posts'});
+  // }, []);
 
   return (
     <div>
