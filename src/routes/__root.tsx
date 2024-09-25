@@ -1,4 +1,5 @@
 import {Outlet, createRootRoute, Link} from '@tanstack/react-router'
+import { Route as postsRoute} from './posts'
 
 const RootComponent = () => {
   return (
@@ -7,11 +8,17 @@ const RootComponent = () => {
       <nav>
         <ul>
           <li>
+            <Link to="..">Home</Link>
+          </li>
+          <li>
             <Link to="/posts">Posts</Link>
+          </li>
+          <li>
+            <Link to={postsRoute.fullPath}>Posts</Link>
           </li>
         </ul>
       </nav>
-      <Outlet />
+      <Outlet/>
     </div>
   )
 }
