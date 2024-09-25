@@ -24,7 +24,7 @@ import {DynamicProductView} from "./views/DynamicProductView.tsx";
 import {Payment} from "./views/Payment.tsx";
 import {DataView} from "./views/DataView.tsx";
 import {ErrorView} from "./views/ErrorView.tsx";
-import {aboutLoader} from "./routes/aboutLoader.ts";
+import {aboutLoader} from "./route/aboutLoader.ts";
 import {Create} from "./views/Create.tsx";
 import {AwaitedData} from "./AwaitedData.tsx";
 import {fakeLoader} from "./loaders/fakeLoader.ts";
@@ -113,7 +113,7 @@ const router2 = createBrowserRouter(
       <Route
         path="/about"
         loader={aboutLoader}
-        lazy={() => import('./routes/About')}
+        lazy={() => import('./route/About')}
       />
       <Route path="path-with-loader/:id?" element={<Payment />} loader={() => {
         return 'Lorem ipsum';
