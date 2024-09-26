@@ -1,4 +1,6 @@
 import {Outlet, createRootRoute, Link, useNavigate} from '@tanstack/react-router'
+import { TanStackRouterDevtools } from '@tanstack/router-devtools'
+
 import { Route as postsRoute} from './posts'
 // import {useEffect} from "react";
 
@@ -26,6 +28,7 @@ const RootComponent = () => {
         </ul>
       </nav>
       <Outlet/>
+      <TanStackRouterDevtools />
     </div>
   )
 }
