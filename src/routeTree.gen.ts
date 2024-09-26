@@ -14,8 +14,8 @@ import { Route as rootRoute } from './routes/__root'
 import { Route as WrapperImport } from './routes/_wrapper'
 import { Route as SplatImport } from './routes/$'
 import { Route as IndexImport } from './routes/index'
-import { Route as WrapperPostsImport } from './routes/_wrapper.posts'
-import { Route as WrapperPostsPostIdImport } from './routes/_wrapper.posts.$postId'
+import { Route as WrapperPostsImport } from './routes/_wrapper/posts'
+import { Route as WrapperPostsPostIdImport } from './routes/_wrapper/posts.$postId'
 
 // Create/Update Routes
 
@@ -193,14 +193,14 @@ export const routeTree = rootRoute
       ]
     },
     "/_wrapper/posts": {
-      "filePath": "_wrapper.posts.tsx",
+      "filePath": "_wrapper/posts.tsx",
       "parent": "/_wrapper",
       "children": [
         "/_wrapper/posts/$postId"
       ]
     },
     "/_wrapper/posts/$postId": {
-      "filePath": "_wrapper.posts.$postId.tsx",
+      "filePath": "_wrapper/posts.$postId.tsx",
       "parent": "/_wrapper/posts"
     }
   }
