@@ -1,8 +1,13 @@
 import {Outlet, createRootRoute, Link, useNavigate} from '@tanstack/react-router'
-import { TanStackRouterDevtools } from '@tanstack/router-devtools'
-
+// import { TanStackRouterDevtools } from '@tanstack/router-devtools'
 import { Route as postsRoute} from './posts'
+import React from "react";
 // import {useEffect} from "react";
+
+const TanStackRouterDevtools = import.meta.env.DEV ?
+  React.lazy(() => import('@tanstack/router-devtools').then((res) => ({
+    default: res.TanStackRouterDevtools
+  }))) : () => null;
 
 const RootComponent = () => {
   // const navigate = useNavigate();
@@ -28,7 +33,7 @@ const RootComponent = () => {
         </ul>
       </nav>
       <Outlet/>
-      <TanStackRouterDevtools />
+      {/*<TanStackRouterDevtools />*/}
     </div>
   )
 }
