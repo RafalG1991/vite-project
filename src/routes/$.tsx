@@ -1,8 +1,13 @@
 import { createFileRoute } from '@tanstack/react-router'
 
 const NotFound = () => {
+  const { _splat } = Route.useParams();
+
   return (
-    <h1>Not found!</h1>
+    <div>
+      <h1>{_splat}</h1>
+      <h2>Not found!</h2>
+    </div>
   )
 }
 
