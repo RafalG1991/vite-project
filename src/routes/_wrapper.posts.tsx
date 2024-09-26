@@ -1,4 +1,4 @@
-import {createFileRoute, Outlet} from '@tanstack/react-router'
+import { createFileRoute, Outlet } from '@tanstack/react-router'
 
 const Posts = () => {
   return (
@@ -9,6 +9,6 @@ const Posts = () => {
   )
 }
 
-export const Route = createFileRoute('/posts')({
+export const Route = createFileRoute('/_wrapper/posts')({
   component: Posts,
 })

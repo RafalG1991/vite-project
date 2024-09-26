@@ -1,6 +1,6 @@
 import {Outlet, createRootRoute, Link, useNavigate} from '@tanstack/react-router'
 // import { TanStackRouterDevtools } from '@tanstack/router-devtools'
-import { Route as postsRoute} from './posts'
+import { Route as postsRoute} from './_wrapper.posts.tsx'
 import React, {Suspense} from "react";
 // import {useEffect} from "react";
 

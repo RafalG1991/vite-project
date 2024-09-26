@@ -11,17 +11,12 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
-import { Route as PostsImport } from './routes/posts'
 import { Route as WrapperImport } from './routes/_wrapper'
 import { Route as IndexImport } from './routes/index'
-import { Route as PostsPostIdImport } from './routes/posts.$postId'
+import { Route as WrapperPostsImport } from './routes/_wrapper.posts'
+import { Route as WrapperPostsPostIdImport } from './routes/_wrapper.posts.$postId'
 
 // Create/Update Routes
-
-const PostsRoute = PostsImport.update({
-  path: '/posts',
-  getParentRoute: () => rootRoute,
-} as any)
 
 const WrapperRoute = WrapperImport.update({
   id: '/_wrapper',
@@ -33,9 +28,14 @@ const IndexRoute = IndexImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
-const PostsPostIdRoute = PostsPostIdImport.update({
+const WrapperPostsRoute = WrapperPostsImport.update({
+  path: '/posts',
+  getParentRoute: () => WrapperRoute,
+} as any)
+
+const WrapperPostsPostIdRoute = WrapperPostsPostIdImport.update({
   path: '/$postId',
-  getParentRoute: () => PostsRoute,
+  getParentRoute: () => WrapperPostsRoute,
 } as any)
 
 // Populate the FileRoutesByPath interface
@@ -56,55 +56,68 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WrapperImport
       parentRoute: typeof rootRoute
     }
-    '/posts': {
-      id: '/posts'
+    '/_wrapper/posts': {
+      id: '/_wrapper/posts'
       path: '/posts'
       fullPath: '/posts'
-      preLoaderRoute: typeof PostsImport
-      parentRoute: typeof rootRoute
+      preLoaderRoute: typeof WrapperPostsImport
+      parentRoute: typeof WrapperImport
     }
-    '/posts/$postId': {
-      id: '/posts/$postId'
+    '/_wrapper/posts/$postId': {
+      id: '/_wrapper/posts/$postId'
       path: '/$postId'
       fullPath: '/posts/$postId'
-      preLoaderRoute: typeof PostsPostIdImport
-      parentRoute: typeof PostsImport
+      preLoaderRoute: typeof WrapperPostsPostIdImport
+      parentRoute: typeof WrapperPostsImport
     }
   }
 }
 
 // Create and export the route tree
 
-interface PostsRouteChildren {
-  PostsPostIdRoute: typeof PostsPostIdRoute
+interface WrapperPostsRouteChildren {
+  WrapperPostsPostIdRoute: typeof WrapperPostsPostIdRoute
 }
 
-const PostsRouteChildren: PostsRouteChildren = {
-  PostsPostIdRoute: PostsPostIdRoute,
+const WrapperPostsRouteChildren: WrapperPostsRouteChildren = {
+  WrapperPostsPostIdRoute: WrapperPostsPostIdRoute,
 }
 
-const PostsRouteWithChildren = PostsRoute._addFileChildren(PostsRouteChildren)
+const WrapperPostsRouteWithChildren = WrapperPostsRoute._addFileChildren(
+  WrapperPostsRouteChildren,
+)
+
+interface WrapperRouteChildren {
+  WrapperPostsRoute: typeof WrapperPostsRouteWithChildren
+}
+
+const WrapperRouteChildren: WrapperRouteChildren = {
+  WrapperPostsRoute: WrapperPostsRouteWithChildren,
+}
+
+const WrapperRouteWithChildren =
+  WrapperRoute._addFileChildren(WrapperRouteChildren)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '': typeof WrapperRoute
-  '/posts': typeof PostsRouteWithChildren
-  '/posts/$postId': typeof PostsPostIdRoute
+  '': typeof WrapperRouteWithChildren
+  '/posts': typeof WrapperPostsRouteWithChildren
+  '/posts/$postId': typeof WrapperPostsPostIdRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '': typeof WrapperRoute
-  '/posts': typeof PostsRouteWithChildren
-  '/posts/$postId': typeof PostsPostIdRoute
+  '': typeof WrapperRouteWithChildren
+  '/posts': typeof WrapperPostsRouteWithChildren
+  '/posts/$postId': typeof WrapperPostsPostIdRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
-  '/_wrapper': typeof WrapperRoute
-  '/posts': typeof PostsRouteWithChildren
-  '/posts/$postId': typeof PostsPostIdRoute
+  '/_wrapper': typeof WrapperRouteWithChildren
+  '/_wrapper/posts': typeof WrapperPostsRouteWithChildren
+  '/_wrapper/posts/$postId': typeof WrapperPostsPostIdRoute
 }
 
 export interface FileRouteTypes {
@@ -112,20 +125,23 @@ export interface FileRouteTypes {
   fullPaths: '/' | '' | '/posts' | '/posts/$postId'
   fileRoutesByTo: FileRoutesByTo
   to: '/' | '' | '/posts' | '/posts/$postId'
-  id: '__root__' | '/' | '/_wrapper' | '/posts' | '/posts/$postId'
+  id:
+    | '__root__'
+    | '/'
+    | '/_wrapper'
+    | '/_wrapper/posts'
+    | '/_wrapper/posts/$postId'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  WrapperRoute: typeof WrapperRoute
-  PostsRoute: typeof PostsRouteWithChildren
+  WrapperRoute: typeof WrapperRouteWithChildren
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  WrapperRoute: WrapperRoute,
-  PostsRoute: PostsRouteWithChildren,
+  WrapperRoute: WrapperRouteWithChildren,
 }
 
 export const routeTree = rootRoute
@@ -141,25 +157,28 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
-        "/_wrapper",
-        "/posts"
+        "/_wrapper"
       ]
     },
     "/": {
       "filePath": "index.tsx"
     },
     "/_wrapper": {
-      "filePath": "_wrapper.tsx"
-    },
-    "/posts": {
-      "filePath": "posts.tsx",
+      "filePath": "_wrapper.tsx",
       "children": [
-        "/posts/$postId"
+        "/_wrapper/posts"
       ]
     },
-    "/posts/$postId": {
-      "filePath": "posts.$postId.tsx",
-      "parent": "/posts"
+    "/_wrapper/posts": {
+      "filePath": "_wrapper.posts.tsx",
+      "parent": "/_wrapper",
+      "children": [
+        "/_wrapper/posts/$postId"
+      ]
+    },
+    "/_wrapper/posts/$postId": {
+      "filePath": "_wrapper.posts.$postId.tsx",
+      "parent": "/_wrapper/posts"
     }
   }
 }
