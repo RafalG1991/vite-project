@@ -15,7 +15,9 @@ import { Route as WrapperImport } from './routes/_wrapper'
 import { Route as SplatImport } from './routes/$'
 import { Route as IndexImport } from './routes/index'
 import { Route as WrapperPostsImport } from './routes/_wrapper/posts'
+import { Route as WrapperPokemonIndexImport } from './routes/_wrapper/pokemon/index'
 import { Route as WrapperPostsPostIdImport } from './routes/_wrapper/posts.$postId'
+import { Route as WrapperPokemonPokemonNameImport } from './routes/_wrapper/pokemon/$pokemonName'
 
 // Create/Update Routes
 
@@ -39,9 +41,19 @@ const WrapperPostsRoute = WrapperPostsImport.update({
   getParentRoute: () => WrapperRoute,
 } as any)
 
+const WrapperPokemonIndexRoute = WrapperPokemonIndexImport.update({
+  path: '/pokemon/',
+  getParentRoute: () => WrapperRoute,
+} as any)
+
 const WrapperPostsPostIdRoute = WrapperPostsPostIdImport.update({
   path: '/$postId',
   getParentRoute: () => WrapperPostsRoute,
+} as any)
+
+const WrapperPokemonPokemonNameRoute = WrapperPokemonPokemonNameImport.update({
+  path: '/pokemon/$pokemonName',
+  getParentRoute: () => WrapperRoute,
 } as any)
 
 // Populate the FileRoutesByPath interface
@@ -76,12 +88,26 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WrapperPostsImport
       parentRoute: typeof WrapperImport
     }
+    '/_wrapper/pokemon/$pokemonName': {
+      id: '/_wrapper/pokemon/$pokemonName'
+      path: '/pokemon/$pokemonName'
+      fullPath: '/pokemon/$pokemonName'
+      preLoaderRoute: typeof WrapperPokemonPokemonNameImport
+      parentRoute: typeof WrapperImport
+    }
     '/_wrapper/posts/$postId': {
       id: '/_wrapper/posts/$postId'
       path: '/$postId'
       fullPath: '/posts/$postId'
       preLoaderRoute: typeof WrapperPostsPostIdImport
       parentRoute: typeof WrapperPostsImport
+    }
+    '/_wrapper/pokemon/': {
+      id: '/_wrapper/pokemon/'
+      path: '/pokemon'
+      fullPath: '/pokemon'
+      preLoaderRoute: typeof WrapperPokemonIndexImport
+      parentRoute: typeof WrapperImport
     }
   }
 }
@@ -102,10 +128,14 @@ const WrapperPostsRouteWithChildren = WrapperPostsRoute._addFileChildren(
 
 interface WrapperRouteChildren {
   WrapperPostsRoute: typeof WrapperPostsRouteWithChildren
+  WrapperPokemonPokemonNameRoute: typeof WrapperPokemonPokemonNameRoute
+  WrapperPokemonIndexRoute: typeof WrapperPokemonIndexRoute
 }
 
 const WrapperRouteChildren: WrapperRouteChildren = {
   WrapperPostsRoute: WrapperPostsRouteWithChildren,
+  WrapperPokemonPokemonNameRoute: WrapperPokemonPokemonNameRoute,
+  WrapperPokemonIndexRoute: WrapperPokemonIndexRoute,
 }
 
 const WrapperRouteWithChildren =
@@ -116,7 +146,9 @@ export interface FileRoutesByFullPath {
   '/$': typeof SplatRoute
   '': typeof WrapperRouteWithChildren
   '/posts': typeof WrapperPostsRouteWithChildren
+  '/pokemon/$pokemonName': typeof WrapperPokemonPokemonNameRoute
   '/posts/$postId': typeof WrapperPostsPostIdRoute
+  '/pokemon': typeof WrapperPokemonIndexRoute
 }
 
 export interface FileRoutesByTo {
@@ -124,7 +156,9 @@ export interface FileRoutesByTo {
   '/$': typeof SplatRoute
   '': typeof WrapperRouteWithChildren
   '/posts': typeof WrapperPostsRouteWithChildren
+  '/pokemon/$pokemonName': typeof WrapperPokemonPokemonNameRoute
   '/posts/$postId': typeof WrapperPostsPostIdRoute
+  '/pokemon': typeof WrapperPokemonIndexRoute
 }
 
 export interface FileRoutesById {
@@ -133,21 +167,39 @@ export interface FileRoutesById {
   '/$': typeof SplatRoute
   '/_wrapper': typeof WrapperRouteWithChildren
   '/_wrapper/posts': typeof WrapperPostsRouteWithChildren
+  '/_wrapper/pokemon/$pokemonName': typeof WrapperPokemonPokemonNameRoute
   '/_wrapper/posts/$postId': typeof WrapperPostsPostIdRoute
+  '/_wrapper/pokemon/': typeof WrapperPokemonIndexRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/$' | '' | '/posts' | '/posts/$postId'
+  fullPaths:
+    | '/'
+    | '/$'
+    | ''
+    | '/posts'
+    | '/pokemon/$pokemonName'
+    | '/posts/$postId'
+    | '/pokemon'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/$' | '' | '/posts' | '/posts/$postId'
+  to:
+    | '/'
+    | '/$'
+    | ''
+    | '/posts'
+    | '/pokemon/$pokemonName'
+    | '/posts/$postId'
+    | '/pokemon'
   id:
     | '__root__'
     | '/'
     | '/$'
     | '/_wrapper'
     | '/_wrapper/posts'
+    | '/_wrapper/pokemon/$pokemonName'
     | '/_wrapper/posts/$postId'
+    | '/_wrapper/pokemon/'
   fileRoutesById: FileRoutesById
 }
 
@@ -189,7 +241,9 @@ export const routeTree = rootRoute
     "/_wrapper": {
       "filePath": "_wrapper.tsx",
       "children": [
-        "/_wrapper/posts"
+        "/_wrapper/posts",
+        "/_wrapper/pokemon/$pokemonName",
+        "/_wrapper/pokemon/"
       ]
     },
     "/_wrapper/posts": {
@@ -199,9 +253,17 @@ export const routeTree = rootRoute
         "/_wrapper/posts/$postId"
       ]
     },
+    "/_wrapper/pokemon/$pokemonName": {
+      "filePath": "_wrapper/pokemon/$pokemonName.tsx",
+      "parent": "/_wrapper"
+    },
     "/_wrapper/posts/$postId": {
       "filePath": "_wrapper/posts.$postId.tsx",
       "parent": "/_wrapper/posts"
+    },
+    "/_wrapper/pokemon/": {
+      "filePath": "_wrapper/pokemon/index.tsx",
+      "parent": "/_wrapper"
     }
   }
 }
