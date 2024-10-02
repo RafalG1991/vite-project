@@ -154,6 +154,7 @@ const theme = {
 
 const router = createRouter({
   routeTree,
+  defaultStaleTime: 10000,
 });
 
 declare module '@tanstack/react-router' {
