@@ -30,11 +30,17 @@ const RootComponent = () => {
           <li>
             <Link to={postsRoute.fullPath}>Posts</Link>
           </li>
+          <li>
+            <Link to="/pokemon/$pokemonName" params={{pokemonName: 'pikachu'}}>Pikachu</Link>
+          </li>
+          <li>
+            <Link to="/pokemon/$pokemonName" params={{pokemonName: 'charizard'}}>Charizard</Link>
+          </li>
         </ul>
       </nav>
       <Outlet/>
       <Suspense>
-        <TanStackRouterDevtools />
+        <TanStackRouterDevtools/>
       </Suspense>
     </div>
   )
