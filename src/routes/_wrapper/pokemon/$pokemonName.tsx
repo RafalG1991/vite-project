@@ -14,4 +14,5 @@ const SinglePokemon = () => {
 export const Route = createFileRoute('/_wrapper/pokemon/$pokemonName')({
   loader: ({params}) => getPokemon(params.pokemonName),
   component: SinglePokemon,
+  pendingComponent: () => <h1>Loading pokemon...</h1>
 })
