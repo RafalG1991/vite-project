@@ -19,6 +19,11 @@ const SinglePokemon = () => {
 
 export const Route = createFileRoute('/_wrapper/pokemon/$pokemonName')({
   loader: ({params}) => getPokemon(params.pokemonName),
+  validateSearch: (search: Record<string, unknown>): PokemonSearch => ({
+    page: Number(search?.page ?? 1),
+    pageSize: Number(search?.pageSize ?? 100),
+    filters: Array.isArray(search?.filters) ? search?.filters.map(filter => filter.toString()) : [],
+  }),
   component: SinglePokemon,
   pendingComponent: () => <h1>Loading pokemon...</h1>
 })
