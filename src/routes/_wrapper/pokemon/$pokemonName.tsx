@@ -1,6 +1,12 @@
 import { createFileRoute } from '@tanstack/react-router'
 import {getPokemon} from "./-loaders";
 
+type PokemonSearch = {
+  page: number;
+  pageSize: number;
+  filters: string[];
+}
+
 const SinglePokemon = () => {
   const {name, weight} = Route.useLoaderData();
   return (
