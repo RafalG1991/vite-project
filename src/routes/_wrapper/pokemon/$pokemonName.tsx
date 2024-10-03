@@ -9,10 +9,13 @@ type PokemonSearch = {
 
 const SinglePokemon = () => {
   const {name, weight} = Route.useLoaderData();
+  const {page,pageSize,filters} = Route.useSearch();
+
   return (
     <div>
       <p>Pokemon name: {name}</p>
       <p>Pokemon weight: {weight}</p>
+      <h3>Route params: {page} {pageSize} {filters.join(', ')}</h3>
     </div>
   )
 }
