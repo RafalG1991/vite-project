@@ -1,5 +1,6 @@
-import { createFileRoute } from '@tanstack/react-router'
+import {createFileRoute, Link} from '@tanstack/react-router'
 import {getPokemon} from "./-loaders";
+import React from "react";
 
 type PokemonSearch = {
   page: number;
@@ -16,6 +17,13 @@ const SinglePokemon = () => {
       <p>Pokemon name: {name}</p>
       <p>Pokemon weight: {weight}</p>
       <h3>Route params: {page} {pageSize} {filters.join(', ')}</h3>
+      <Link
+        to="."
+        search={(prev) => ({
+          ...prev,
+          page: (prev.page || 0) + 1,
+        })}
+      >Next page</Link>
     </div>
   )
 }
