@@ -29,6 +29,7 @@ const SinglePokemon = () => {
 }
 
 export const Route = createFileRoute('/_wrapper/pokemon/$pokemonName')({
+  loaderDeps: ({search}) => ({page: search.page}),
   loader: ({params}) => getPokemon(params.pokemonName),
   validateSearch: (search: Record<string, unknown>): PokemonSearch => ({
     page: Number(search?.page ?? 1),
