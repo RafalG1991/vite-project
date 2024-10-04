@@ -31,10 +31,26 @@ const RootComponent = () => {
             <Link to={postsRoute.fullPath}>Posts</Link>
           </li>
           <li>
-            <Link to="/pokemon/$pokemonName" params={{pokemonName: 'pikachu'}}>Pikachu</Link>
+            <Link
+              to="/pokemon/$pokemonName"
+              params={{pokemonName: 'pikachu'}}
+              search={{
+                page: 1,
+                pageSize: 10,
+                filters: ['oldest', 'desc'],
+              }}
+            >Pikachu</Link>
           </li>
           <li>
-            <Link to="/pokemon/$pokemonName" params={{pokemonName: 'charizard'}}>Charizard</Link>
+            <Link
+              to="/pokemon/$pokemonName"
+              params={{pokemonName: 'charizard'}}
+              search={{
+                page: 1,
+                pageSize: 10,
+                filters: ['new', 'asc'],
+              }}
+            >Charizard</Link>
           </li>
         </ul>
       </nav>
