@@ -52,6 +52,12 @@ const RootComponent = () => {
               }}
             >Charizard</Link>
           </li>
+          <li>
+            <Link
+              to="/pokemon/defer/$pokemonName"
+              params={{pokemonName: 'charizard'}}
+            >Deferred Charizard</Link>
+          </li>
         </ul>
       </nav>
       <Outlet/>
