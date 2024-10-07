@@ -7,7 +7,7 @@ type PeopleSearch = {
 }
 
 const People = () => {
-  const { data, prev, next } = Route.useLoaderData();
+  const { data, prev, next} = Route.useLoaderData();
 
   return (
     <div>
@@ -16,11 +16,13 @@ const People = () => {
       </ul>
       {prev ?
         <Link to='.' search={prev => ({
-        page: (prev.page || 0) - 1,
+          ...prev,
+          page: (prev.page || 0) - 1,
       })}>Previous</Link>
         : null}
       {next ?
         <Link to='.' search={prev => ({
+          ...prev,
           page: (prev.page || 0) + 1,
         })}>Next</Link>: null}
     </div>
