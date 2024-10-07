@@ -25,6 +25,28 @@ const People = () => {
           ...prev,
           page: (prev.page || 0) + 1,
         })}>Next</Link>: null}
+
+      <div>
+        <h3>Items per page</h3>
+        <div>
+          <Link to='.' search={prev => ({
+            ...prev,
+            size: 5,
+          })}>5</Link>
+        </div>
+        <div>
+          <Link to='.' search={prev => ({
+            ...prev,
+            size: 10,
+          })}>10</Link>
+        </div>
+        <div>
+          <Link to='.' search={prev => ({
+            ...prev,
+            size: 20,
+          })}>20</Link>
+        </div>
+      </div>
     </div>
   )
 }
