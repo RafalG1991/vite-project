@@ -3,6 +3,7 @@ import {peopleLoader} from "./-loaders";
 
 type PeopleSearch = {
   page: number,
+  size: number,
 }
 
 const People = () => {
@@ -29,8 +30,9 @@ const People = () => {
 export const Route = createFileRoute('/_wrapper/people/')({
   validateSearch: (search: Record<string, unknown>): PeopleSearch => ({
     page: Number(search?.page ?? 1),
+    size: Number(search?.size ?? 10),
   }),
-  loaderDeps: ({ search }) => ({ page: search.page }),
-  loader: ({ deps: { page}}) => peopleLoader(page),
+  loaderDeps: ({ search }) => ({ page: search.page, size: search.size }),
+  loader: ({ deps: { page, size}}) => peopleLoader(page, size),
   component: People,
 })
