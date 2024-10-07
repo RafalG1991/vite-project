@@ -16,6 +16,7 @@ import { Route as SplatImport } from './routes/$'
 import { Route as IndexImport } from './routes/index'
 import { Route as WrapperPostsImport } from './routes/_wrapper/posts'
 import { Route as WrapperPokemonIndexImport } from './routes/_wrapper/pokemon/index'
+import { Route as WrapperPeopleIndexImport } from './routes/_wrapper/people/index'
 import { Route as WrapperPostsPostIdImport } from './routes/_wrapper/posts.$postId'
 import { Route as WrapperPokemonPokemonNameImport } from './routes/_wrapper/pokemon/$pokemonName'
 import { Route as WrapperPokemonDeferPokemonNameImport } from './routes/_wrapper/pokemon/defer.$pokemonName'
@@ -44,6 +45,11 @@ const WrapperPostsRoute = WrapperPostsImport.update({
 
 const WrapperPokemonIndexRoute = WrapperPokemonIndexImport.update({
   path: '/pokemon/',
+  getParentRoute: () => WrapperRoute,
+} as any)
+
+const WrapperPeopleIndexRoute = WrapperPeopleIndexImport.update({
+  path: '/people/',
   getParentRoute: () => WrapperRoute,
 } as any)
 
@@ -109,6 +115,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WrapperPostsPostIdImport
       parentRoute: typeof WrapperPostsImport
     }
+    '/_wrapper/people/': {
+      id: '/_wrapper/people/'
+      path: '/people'
+      fullPath: '/people'
+      preLoaderRoute: typeof WrapperPeopleIndexImport
+      parentRoute: typeof WrapperImport
+    }
     '/_wrapper/pokemon/': {
       id: '/_wrapper/pokemon/'
       path: '/pokemon'
@@ -143,6 +156,7 @@ const WrapperPostsRouteWithChildren = WrapperPostsRoute._addFileChildren(
 interface WrapperRouteChildren {
   WrapperPostsRoute: typeof WrapperPostsRouteWithChildren
   WrapperPokemonPokemonNameRoute: typeof WrapperPokemonPokemonNameRoute
+  WrapperPeopleIndexRoute: typeof WrapperPeopleIndexRoute
   WrapperPokemonIndexRoute: typeof WrapperPokemonIndexRoute
   WrapperPokemonDeferPokemonNameRoute: typeof WrapperPokemonDeferPokemonNameRoute
 }
@@ -150,6 +164,7 @@ interface WrapperRouteChildren {
 const WrapperRouteChildren: WrapperRouteChildren = {
   WrapperPostsRoute: WrapperPostsRouteWithChildren,
   WrapperPokemonPokemonNameRoute: WrapperPokemonPokemonNameRoute,
+  WrapperPeopleIndexRoute: WrapperPeopleIndexRoute,
   WrapperPokemonIndexRoute: WrapperPokemonIndexRoute,
   WrapperPokemonDeferPokemonNameRoute: WrapperPokemonDeferPokemonNameRoute,
 }
@@ -164,6 +179,7 @@ export interface FileRoutesByFullPath {
   '/posts': typeof WrapperPostsRouteWithChildren
   '/pokemon/$pokemonName': typeof WrapperPokemonPokemonNameRoute
   '/posts/$postId': typeof WrapperPostsPostIdRoute
+  '/people': typeof WrapperPeopleIndexRoute
   '/pokemon': typeof WrapperPokemonIndexRoute
   '/pokemon/defer/$pokemonName': typeof WrapperPokemonDeferPokemonNameRoute
 }
@@ -175,6 +191,7 @@ export interface FileRoutesByTo {
   '/posts': typeof WrapperPostsRouteWithChildren
   '/pokemon/$pokemonName': typeof WrapperPokemonPokemonNameRoute
   '/posts/$postId': typeof WrapperPostsPostIdRoute
+  '/people': typeof WrapperPeopleIndexRoute
   '/pokemon': typeof WrapperPokemonIndexRoute
   '/pokemon/defer/$pokemonName': typeof WrapperPokemonDeferPokemonNameRoute
 }
@@ -187,6 +204,7 @@ export interface FileRoutesById {
   '/_wrapper/posts': typeof WrapperPostsRouteWithChildren
   '/_wrapper/pokemon/$pokemonName': typeof WrapperPokemonPokemonNameRoute
   '/_wrapper/posts/$postId': typeof WrapperPostsPostIdRoute
+  '/_wrapper/people/': typeof WrapperPeopleIndexRoute
   '/_wrapper/pokemon/': typeof WrapperPokemonIndexRoute
   '/_wrapper/pokemon/defer/$pokemonName': typeof WrapperPokemonDeferPokemonNameRoute
 }
@@ -200,6 +218,7 @@ export interface FileRouteTypes {
     | '/posts'
     | '/pokemon/$pokemonName'
     | '/posts/$postId'
+    | '/people'
     | '/pokemon'
     | '/pokemon/defer/$pokemonName'
   fileRoutesByTo: FileRoutesByTo
@@ -210,6 +229,7 @@ export interface FileRouteTypes {
     | '/posts'
     | '/pokemon/$pokemonName'
     | '/posts/$postId'
+    | '/people'
     | '/pokemon'
     | '/pokemon/defer/$pokemonName'
   id:
@@ -220,6 +240,7 @@ export interface FileRouteTypes {
     | '/_wrapper/posts'
     | '/_wrapper/pokemon/$pokemonName'
     | '/_wrapper/posts/$postId'
+    | '/_wrapper/people/'
     | '/_wrapper/pokemon/'
     | '/_wrapper/pokemon/defer/$pokemonName'
   fileRoutesById: FileRoutesById
@@ -265,6 +286,7 @@ export const routeTree = rootRoute
       "children": [
         "/_wrapper/posts",
         "/_wrapper/pokemon/$pokemonName",
+        "/_wrapper/people/",
         "/_wrapper/pokemon/",
         "/_wrapper/pokemon/defer/$pokemonName"
       ]
@@ -283,6 +305,10 @@ export const routeTree = rootRoute
     "/_wrapper/posts/$postId": {
       "filePath": "_wrapper/posts.$postId.tsx",
       "parent": "/_wrapper/posts"
+    },
+    "/_wrapper/people/": {
+      "filePath": "_wrapper/people/index.tsx",
+      "parent": "/_wrapper"
     },
     "/_wrapper/pokemon/": {
       "filePath": "_wrapper/pokemon/index.tsx",
