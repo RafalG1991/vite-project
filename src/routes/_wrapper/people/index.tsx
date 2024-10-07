@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/react-router'
+import {createFileRoute, Link} from '@tanstack/react-router'
 import {peopleLoader} from "./-loaders";
 
 type PeopleSearch = {
@@ -6,15 +6,23 @@ type PeopleSearch = {
 }
 
 const People = () => {
-  const { data } = Route.useLoaderData();
+  const { data, prev, next } = Route.useLoaderData();
 
   return (
     <div>
       <ul>
         {data.map(person => <li key={person.id}>{person.name}</li>)}
       </ul>
+      {prev ?
+        <Link to='.' search={prev => ({
+        page: (prev.page || 0) - 1,
+      })}>Previous</Link>
+        : null}
+      {next ?
+        <Link to='.' search={prev => ({
+          page: (prev.page || 0) + 1,
+        })}>Next</Link>: null}
     </div>
-
   )
 }
 
