@@ -6,9 +6,14 @@ type PeopleSearch = {
 }
 
 const People = () => {
-  const {} = Route.useLoaderData();
+  const { data } = Route.useLoaderData();
 
   return (
+    <div>
+      <ul>
+        {data.map(person => <li key={person.id}>{person.name}</li>)}
+      </ul>
+    </div>
 
   )
 }
