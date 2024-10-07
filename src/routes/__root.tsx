@@ -61,7 +61,7 @@ const RootComponent = () => {
           <li>
             <Link
               to="/people"
-              search={{page: 1}}
+              search={{page: 1, size: 10}}
             >People</Link>
           </li>
         </ul>
