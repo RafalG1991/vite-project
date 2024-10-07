@@ -31,18 +31,21 @@ const People = () => {
         <div>
           <Link to='.' search={prev => ({
             ...prev,
+            page: 1,
             size: 5,
           })}>5</Link>
         </div>
         <div>
           <Link to='.' search={prev => ({
             ...prev,
+            page: 1,
             size: 10,
           })}>10</Link>
         </div>
         <div>
           <Link to='.' search={prev => ({
             ...prev,
+            page: 1,
             size: 20,
           })}>20</Link>
         </div>
