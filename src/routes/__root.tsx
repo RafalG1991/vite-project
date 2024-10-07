@@ -58,6 +58,12 @@ const RootComponent = () => {
               params={{pokemonName: 'charizard'}}
             >Deferred Charizard</Link>
           </li>
+          <li>
+            <Link
+              to="/people"
+              search={{page: 1}}
+            >People</Link>
+          </li>
         </ul>
       </nav>
       <Outlet/>
