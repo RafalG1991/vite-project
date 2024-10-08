@@ -13,8 +13,4 @@ const IP = () => {
 
 export const Route = createLazyFileRoute('/ip')({
   component: IP,
-  loader: async () => {
-    const response = await fetch('https://api.ipify.org?format=json')
-    return response.json() as Promise<{ ip: string }>
-  },
 })
