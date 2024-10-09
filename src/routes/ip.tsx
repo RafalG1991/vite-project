@@ -1,15 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
-
-function IP () {
-  const { ip } = Route.useLoaderData()
-
-  return (
-    <div>
-      <h1>Your IP:</h1>
-      <h2>{ip}</h2>
-    </div>
-  )
-}
+import {IP} from "../IP.tsx";
 
 export const Route = createFileRoute('/ip')({
   component: IP,
