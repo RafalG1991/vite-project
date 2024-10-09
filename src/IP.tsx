@@ -1,7 +1,9 @@
-import {Route} from "./routes/ip.tsx";
+import {getRouteApi} from "@tanstack/react-router";
+
+const IpRoute = getRouteApi('/ip');
 
 export function IP () {
-  const { ip } = Route.useLoaderData()
+  const { ip } = IpRoute.useLoaderData()
 
   return (
     <div>
