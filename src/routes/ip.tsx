@@ -1,6 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 
-const IP = () => {
+function IP () {
   const { ip } = Route.useLoaderData()
 
   return (
