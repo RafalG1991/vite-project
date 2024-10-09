@@ -1,4 +1,4 @@
-import {Outlet, createRootRoute, Link, useNavigate} from '@tanstack/react-router'
+import {Outlet, Link, createRootRouteWithContext} from '@tanstack/react-router'
 // import { TanStackRouterDevtools } from '@tanstack/router-devtools'
 import { Route as postsRoute} from './_wrapper/posts.tsx'
 import React, {Suspense} from "react";
@@ -74,6 +74,6 @@ const RootComponent = () => {
   )
 }
 
-export const Route = createRootRoute({
+export const Route = createRootRouteWithContext<{ value: number }>()({
   component: RootComponent,
 })
