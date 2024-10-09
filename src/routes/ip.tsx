@@ -8,4 +8,5 @@ export const Route = createFileRoute('/ip')({
     const response = await fetch('https://api.ipify.org?format=json')
     return response.json() as Promise<{ ip: string }>
   },
+  beforeLoad: ({ context }) => console.log('Before Load Context: ', context.value),
 })
