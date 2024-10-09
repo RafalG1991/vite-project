@@ -27,7 +27,7 @@ import { Route as WrapperPokemonDeferPokemonNameImport } from './routes/_wrapper
 const IpRoute = IpImport.update({
   path: '/ip',
   getParentRoute: () => rootRoute,
-} as any).lazy(() => import('./routes/ip.lazy').then((d) => d.Route))
+} as any)
 
 const WrapperRoute = WrapperImport.update({
   id: '/_wrapper',
