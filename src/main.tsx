@@ -155,6 +155,9 @@ const theme = {
 const router = createRouter({
   routeTree,
   defaultStaleTime: 10000,
+  context: {
+    value: undefined!,
+  }
 });
 
 declare module '@tanstack/react-router' {
@@ -165,7 +168,7 @@ declare module '@tanstack/react-router' {
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <RouterProvider router={router} context={{ value: 10}}/>
     {/*<RouterProvider router={router3} />*/}
     {/*<BrowserRouter>*/}
     {/*  <Routes>*/}
