@@ -1,6 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 
-const Index = () => {
+function Index() {
   return (
     <p>This is Home Page, choose path from menu</p>
   )
