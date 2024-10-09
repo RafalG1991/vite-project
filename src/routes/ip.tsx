@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/react-router'
+import {createFileRoute, redirect} from '@tanstack/react-router'
 import {IP} from "../IP.tsx";
 
 export const Route = createFileRoute('/ip')({
@@ -8,5 +8,11 @@ export const Route = createFileRoute('/ip')({
     const response = await fetch('https://api.ipify.org?format=json')
     return response.json() as Promise<{ ip: string }>
   },
-  beforeLoad: ({ context }) => console.log('Before Load Context: ', context.value),
+  beforeLoad: ({ context }) => {
+    if(context.value < 100) {
+      throw redirect({
+        to: '/',
+      });
+    }
+  },
 })
