@@ -31,6 +31,9 @@ const RootComponent = () => {
             <Link to={postsRoute.fullPath}>Posts</Link>
           </li>
           <li>
+            <Link to={"/ip"}>IP</Link>
+          </li>
+          <li>
             <Link
               to="/pokemon/$pokemonName"
               params={{pokemonName: 'pikachu'}}
