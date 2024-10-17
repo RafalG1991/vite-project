@@ -9,10 +9,10 @@ export const Route = createFileRoute('/ip')({
     return response.json() as Promise<{ ip: string }>
   },
   beforeLoad: ({ context }) => {
-    if(context.value < 100) {
-      throw redirect({
-        to: '/',
-      });
-    }
+    // if(context.value < 100) {
+    //   throw redirect({
+    //     to: '/',
+    //   });
+    // }
   },
 })
