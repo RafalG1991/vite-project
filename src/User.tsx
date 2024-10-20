@@ -1,4 +1,6 @@
 import {SingleUser} from "./types/user.ts";
+import {UserMainData} from "./UserMainData.tsx";
+import {UserDetails} from "./UserDetails.tsx";
 
 export type UserProps = {
   user: SingleUser;
@@ -6,9 +8,9 @@ export type UserProps = {
 
 export const User = ({ user }: UserProps) => {
   return (
-    <li>
-      <UserMainData />
-      <UserDetails />
+    <li key={user.id}>
+      <UserMainData user={user}/>
+      <UserDetails user={user}/>
     </li>
   )
 }
