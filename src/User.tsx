@@ -5,5 +5,10 @@ export type UserProps = {
 }
 
 export const User = ({ user }: UserProps) => {
-
+  return (
+    <li>
+      <UserMainData />
+      <UserDetails />
+    </li>
+  )
 }
