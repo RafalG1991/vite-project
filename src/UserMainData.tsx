@@ -1,4 +1,6 @@
 import {SingleUser} from "./types/user.ts";
+import {UserName} from "./UserName.tsx";
+import {UserLastName} from "./UserLastName.tsx";
 
 export type UserMainDataProps = {
   user: SingleUser;

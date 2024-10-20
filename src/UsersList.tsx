@@ -8,7 +8,7 @@ export type UsersListProps = {
 export const UsersList = ({ users }: UsersListProps) => {
   return (
     <ul>
-      {users.map(user => <User user={user}/>)}
+      {users.map(user => <User user={user} key={user.id}/>)}
     </ul>
   )
 }
