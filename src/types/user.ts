@@ -4,3 +4,7 @@ export type SingleUser = {
   lastName: string;
   age: number;
 }
+
+export type UserContextType = {
+  user: SingleUser;
+}
