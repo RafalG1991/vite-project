@@ -1,7 +1,3 @@
-export type UserNameProps = {
-  name: string;
-}
-
-export const UserName = ({ name }: UserNameProps) => {
+export const UserName = () => {
   return <p><strong>First name:</strong> {name}</p>
 }

@@ -11,7 +11,7 @@ export const UsersList = ({ users }: UsersListProps) => {
     <ul>
       {users.map(user => (
         <UserContext.Provider value={{ user }} key={user.id}>
-          <User user={user} />
+          <User />
         </UserContext.Provider>
       ))}
     </ul>

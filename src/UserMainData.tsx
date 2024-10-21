@@ -1,16 +1,10 @@
-import {SingleUser} from "./types/user.ts";
 import {UserName} from "./UserName.tsx";
 import {UserLastName} from "./UserLastName.tsx";
 
-export type UserMainDataProps = {
-  user: SingleUser;
-}
-
-export const UserMainData = ({ user }: UserMainDataProps) => {
-  const {name, lastName} = user;
+export const UserMainData = () => {
 
   return <div>
-    <UserName name={name}/>
-    <UserLastName lastName={lastName}/>
+    <UserName />
+    <UserLastName />
   </div>
 }

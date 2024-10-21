@@ -1,7 +1,3 @@
-export type UserLastNameProps = {
-  lastName: string;
-}
-
-export const UserLastName = ({ lastName } : UserLastNameProps) => {
+export const UserLastName = () => {
   return <p><strong>Last name:</strong> {lastName}</p>
 }

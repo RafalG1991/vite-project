@@ -1,10 +1,4 @@
-import {SingleUser} from "./types/user.ts";
-
-export type UserDetailsProps = {
-  user: SingleUser;
-}
-
-export const UserDetails = ({ user }: UserDetailsProps) => {
+export const UserDetails = () => {
   const {name, lastName, age} = user;
 
   return <div>
