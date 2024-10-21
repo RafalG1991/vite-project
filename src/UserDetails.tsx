@@ -1,8 +1,7 @@
-import {useContext} from "react";
-import {UserContext} from "./context/UserContext.tsx";
+import {useUserContext} from "./context/useUserContext.tsx";
 
 export const UserDetails = () => {
-  const {user} = useContext(UserContext);
+  const {user} = useUserContext();
 
   if(!user) return null;
 
