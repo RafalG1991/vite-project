@@ -3,7 +3,7 @@ import {UserDetails} from "./UserDetails.tsx";
 
 export const User = () => {
   return (
-    <li key={user.id}>
+    <li>
       <UserMainData />
       <UserDetails />
     </li>
