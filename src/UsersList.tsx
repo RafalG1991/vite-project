@@ -1,5 +1,6 @@
 import {SingleUser} from "./types/user.ts";
 import {User} from "./User.tsx";
+import {UserContext} from "./context/UserContext.tsx";
 
 export type UsersListProps = {
   users: SingleUser[];
@@ -8,7 +9,11 @@ export type UsersListProps = {
 export const UsersList = ({ users }: UsersListProps) => {
   return (
     <ul>
-      {users.map(user => <User user={user} key={user.id}/>)}
+      {users.map(user => (
+        <UserContext.Provider value={{ user }} key={user.id}>
+          <User user={user} />
+        </UserContext.Provider>
+      ))}
     </ul>
   )
 }
