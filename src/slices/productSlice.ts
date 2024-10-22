@@ -21,4 +21,6 @@ export const productSlice = createSlice({
       state.price = action.payload;
     },
   }
-})
+});
+
+export const { setName, setPrice} = productSlice.actions;
