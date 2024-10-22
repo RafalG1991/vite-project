@@ -24,3 +24,4 @@ export const productSlice = createSlice({
 });
 
 export const { setName, setPrice} = productSlice.actions;
+export const productReducer = productSlice.reducer;
