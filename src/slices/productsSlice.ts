@@ -1,5 +1,4 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {productSlice} from "./productSlice.ts";
 
 export type ProductsState = {
     list: string[];
@@ -22,4 +21,4 @@ export const productsSlice = createSlice({
 });
 
 export const {addProduct} = productsSlice.actions;
-export const productsReducer = productSlice.reducer;
+export const productsReducer = productsSlice.reducer;
