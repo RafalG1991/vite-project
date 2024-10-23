@@ -4,6 +4,7 @@ import {Provider} from "react-redux";
 import {store} from "./store";
 import {Product} from "./Product.tsx";
 import {Actions} from "./Actions.tsx";
+import {Products} from "./Products.tsx";
 
 export const Users = () => {
   const {getUsers} = useUsers();
@@ -13,6 +14,7 @@ export const Users = () => {
   return <Provider store={store}>
     <UsersList users={users} />
     <Product />
+    <Products />
     <Actions />
   </Provider>
 }
