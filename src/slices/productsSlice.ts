@@ -1,4 +1,4 @@
-import {createSlice} from "@reduxjs/toolkit";
+import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 
 export type ProductsState = {
     list: string[];
@@ -14,6 +14,9 @@ export const productsSlice = createSlice({
   name: "products",
   initialState,
   reducers: {
-
+    addProduct: (state, action: PayloadAction<string>) => {
+      state.list.push(action.payload);
+    }
   }
-})
+});
+
