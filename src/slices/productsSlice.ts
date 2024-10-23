@@ -16,6 +16,7 @@ export const productsSlice = createSlice({
   reducers: {
     addProduct: (state, action: PayloadAction<string>) => {
       state.list.push(action.payload);
+      state.count++;
     }
   }
 });
