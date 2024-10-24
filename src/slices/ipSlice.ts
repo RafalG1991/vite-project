@@ -39,3 +39,5 @@ export const ipSlice = createSlice({
     })
   }
 });
+
+export const ipReducer = ipSlice.reducer;
