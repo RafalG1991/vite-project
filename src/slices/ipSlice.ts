@@ -27,6 +27,11 @@ export const ipSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(getIpAddress.pending, state => {
       state.loading = true;
+      state.error = '';
+    })
+    builder.addCase(getIpAddress.fulfilled, (state, action) => {
+      state.loading = false;
+      state.value = action.payload.ip;
     })
     builder.addCase(getIpAddress.rejected, state => {
       state.loading = false;
