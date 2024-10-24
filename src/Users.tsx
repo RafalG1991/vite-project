@@ -5,6 +5,7 @@ import {store} from "./store";
 import {Product} from "./Product.tsx";
 import {Actions} from "./Actions.tsx";
 import {Products} from "./Products.tsx";
+import {IpAddress} from "./IpAddress.tsx";
 
 export const Users = () => {
   const {getUsers} = useUsers();
@@ -16,5 +17,6 @@ export const Users = () => {
     <Product />
     <Products />
     <Actions />
+    <IpAddress />
   </Provider>
 }
