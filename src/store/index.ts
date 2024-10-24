@@ -3,6 +3,7 @@ import {productReducer} from "../slices/productSlice.ts";
 import {productsReducer} from "../slices/productsSlice.ts";
 
 export const store = configureStore({
+  devTools: false,
   reducer: {
     product: productReducer,
     products: productsReducer,
