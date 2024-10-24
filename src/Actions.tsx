@@ -17,9 +17,14 @@ export const Actions = () => {
     dispatch(addProduct('Product #777'));
   }
 
+  const loadIpAddress = () => {
+
+  }
+
   return <div>
     <button onClick={setProductName}>Set product name</button>
     <button onClick={setProductPrice}>Set product price</button>
     <button onClick={addNewProduct}>Add new product</button>
+    <button onClick={loadIpAddress}>Get IP address now!</button>
   </div>
 }
