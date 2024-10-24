@@ -1,11 +1,10 @@
-import {useDispatch} from "react-redux";
 import {setName, setPrice} from "./slices/productSlice.ts";
 import {addProduct} from "./slices/productsSlice.ts";
-import {AppDispatch} from "./store";
 import {getIpAddress} from "./slices/ipSlice.ts";
+import {useAppDispatch} from "./hooks/useAppDispatch.ts";
 
 export const Actions = () => {
-  const dispatch = useDispatch<AppDispatch>();
+  const dispatch = useAppDispatch();
 
   const setProductName = () => {
     dispatch(setName('Product #1234'));
