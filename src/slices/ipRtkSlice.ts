@@ -14,4 +14,4 @@ export const ipRtkSlice = createApi({
   }),
 });
 
-export const { } = ipRtkSlice;
+export const { useGetIpAddressQuery } = ipRtkSlice;
