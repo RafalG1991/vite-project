@@ -3,7 +3,6 @@ import {addProduct} from "./slices/productsSlice.ts";
 import {getIpAddress} from "./slices/ipSlice.ts";
 import {useAppDispatch} from "./hooks/useAppDispatch.ts";
 import {ipRtkSlice, useGetIpAddressQuery} from "./slices/ipRtkSlice.ts";
-import {useDispatch} from "react-redux";
 
 export const Actions = () => {
   const dispatch = useAppDispatch();
