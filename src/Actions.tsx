@@ -9,7 +9,6 @@ export const Actions = () => {
   const dispatch = useAppDispatch();
 
   const { refetch } = useGetIpAddressQuery();
-  const dispatch1 = useDispatch();
 
   const setProductName = () => {
     dispatch(setName('Product #1234'));
@@ -32,7 +31,9 @@ export const Actions = () => {
   }
 
   const handleSecondRefetch = () => {
-    dispatch1(ipRtkSlice.endpoints.getIpAddress.initiate());
+    dispatch(ipRtkSlice.endpoints.getIpAddress.initiate(undefined, {
+      forceRefetch: true,
+    }));
   }
 
   return <div>
