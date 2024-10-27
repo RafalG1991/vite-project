@@ -1,9 +1,9 @@
 import {useGetIpAddressQuery} from "./slices/ipRtkSlice.ts";
 
 export const MyIpAddress = () => {
-  const { data, isLoading } = useGetIpAddressQuery();
+  const { data, isLoading, isFetching } = useGetIpAddressQuery();
 
-  if(isLoading) return <h1>Loading...</h1>
+  if(isLoading || isFetching) return <h1>Loading...</h1>
 
   return (
     <div>
