@@ -2,12 +2,14 @@ import {setName, setPrice} from "./slices/productSlice.ts";
 import {addProduct} from "./slices/productsSlice.ts";
 import {getIpAddress} from "./slices/ipSlice.ts";
 import {useAppDispatch} from "./hooks/useAppDispatch.ts";
-import {useGetIpAddressQuery} from "./slices/ipRtkSlice.ts";
+import {ipRtkSlice, useGetIpAddressQuery} from "./slices/ipRtkSlice.ts";
+import {useDispatch} from "react-redux";
 
 export const Actions = () => {
   const dispatch = useAppDispatch();
 
   const { refetch } = useGetIpAddressQuery();
+  const dispatch1 = useDispatch();
 
   const setProductName = () => {
     dispatch(setName('Product #1234'));
@@ -30,7 +32,7 @@ export const Actions = () => {
   }
 
   const handleSecondRefetch = () => {
-
+    dispatch1(ipRtkSlice.endpoints.getIpAddress.initiate());
   }
 
   return <div>
