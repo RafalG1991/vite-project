@@ -35,6 +35,10 @@ export const Actions = () => {
     }));
   }
 
+  const handleInvalidate = () => {
+    dispatch(ipRtkSlice.util.invalidateTags(['IP']));
+  }
+
   return <div>
     <button onClick={setProductName}>Set product name</button>
     <button onClick={setProductPrice}>Set product price</button>
@@ -42,5 +46,6 @@ export const Actions = () => {
     <button onClick={loadIpAddress}>Get IP address now!</button>
     <button onClick={handleFirstRefetch}>Refetch #1</button>
     <button onClick={handleSecondRefetch}>Refetch #2</button>
+    <button onClick={handleInvalidate}>Invalidate tags</button>
   </div>
 }
