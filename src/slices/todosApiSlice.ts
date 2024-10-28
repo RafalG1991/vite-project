@@ -4,6 +4,7 @@ import {Todo} from "../types/todo.ts";
 export const todosApiSlice = createApi({
   reducerPath: 'todosApi',
   baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3000/todos' }),
+  tagTypes: ['TODOS'],
   endpoints: (builder) => ({
     getAllTodos: builder.query<Todo[], void>({
       query: () => '',
@@ -16,6 +17,7 @@ export const todosApiSlice = createApi({
           title,
         },
       }),
+      invalidatesTags: ['TODOS'],
     }),
   }),
 });
