@@ -8,6 +8,7 @@ export const todosApiSlice = createApi({
   endpoints: (builder) => ({
     getAllTodos: builder.query<Todo[], void>({
       query: () => '',
+      providesTags: ['TODOS'],
     }),
     addTodo: builder.mutation<Todo, string>({
       query: (title: string) => ({
