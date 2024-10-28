@@ -1,7 +1,8 @@
 import {useFooStore} from "./store/useFooStore.ts";
+import {useShallow} from "zustand/react/shallow";
 
 export const FooZustand = () => {
-  const { value , setValue} = useFooStore();
+  const { value , setValue} = useFooStore(useShallow(state => ({value: state.value, setValue: state.setValue})));
 
   const setRandomValue = () => {
     setValue(Math.round(Math.random() * 100));
