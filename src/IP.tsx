@@ -3,6 +3,7 @@ import {Provider} from "react-redux";
 import {todosStore} from "./store/todosStore.ts";
 import {TodoList} from "./TodoList.tsx";
 import {TodoForm} from "./TodoForm.tsx";
+import {FooZustand} from "./FooZustand.tsx";
 
 const IpRoute = getRouteApi('/ip');
 
@@ -12,6 +13,7 @@ export function IP () {
 
   return (
     <>
+      <FooZustand />
       <Provider store={todosStore}>
         <TodoForm />
         <TodoList />
