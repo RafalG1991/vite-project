@@ -7,10 +7,11 @@ type IpAddress = {
 export const ipRtkSlice = createApi({
   reducerPath: 'ipApi',
   baseQuery: fetchBaseQuery({baseUrl: 'https://api.ipify.org'}),
-  tagTypes: ['Ip'],
+  tagTypes: ['IP'],
   endpoints: (builder) => ({
     getIpAddress: builder.query<IpAddress, void>({
       query: () => '?format=json',
+      providesTags: ['IP'],
     })
   }),
 });
