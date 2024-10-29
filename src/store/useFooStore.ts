@@ -3,7 +3,8 @@ import {create} from "zustand";
 type FooStore = {
   value: number;
   setValue: (newValue: number) => void;
-  ip: string,
+  ip: string;
+  fetchMyIp: () => Promise<void>;
 }
 
 export const useFooStore = create<FooStore>(set => ({
@@ -13,5 +14,13 @@ export const useFooStore = create<FooStore>(set => ({
     set({
       value: newValue,
     })
+  },
+  fetchMyIp: async () => {
+    const response = await fetch('https://api.ipify.org?format=json');
+    const data: {ip: string} = await response.json();
+
+    set({
+      ip: data.ip,
+    });
   },
 }));
