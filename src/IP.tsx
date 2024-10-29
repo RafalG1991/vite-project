@@ -4,6 +4,7 @@ import {todosStore} from "./store/todosStore.ts";
 import {TodoList} from "./TodoList.tsx";
 import {TodoForm} from "./TodoForm.tsx";
 import {FooZustand} from "./FooZustand.tsx";
+import {MyIp} from "./MyIp.tsx";
 
 const IpRoute = getRouteApi('/ip');
 
@@ -13,6 +14,7 @@ export function IP () {
 
   return (
     <>
+      <MyIp />
       <FooZustand />
       <Provider store={todosStore}>
         <TodoForm />
