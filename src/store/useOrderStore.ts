@@ -1,4 +1,5 @@
 import {create} from "zustand";
+import {persist} from "zustand/middleware";
 
 type OrderState = {
   order: {
@@ -21,20 +22,27 @@ type SetOrderDataAction = {
   configuration: string;
 }
 
-export const useOrderStore = create<OrderState>()(set => ({
-  order: {
-    title: '',
-    configuration: '',
-  },
-  shipping: {
-    city: '',
-    street: '',
-    postalCode: '',
-  },
-  summary: {
-    comment: '',
-  },
-  setOrderData: (payload: SetOrderDataAction) => set({
-    order: payload,
-  }),
-}))
+export const useOrderStore = create<OrderState>()(
+  persist(
+    set => ({
+      order: {
+        title: '',
+        configuration: '',
+      },
+      shipping: {
+        city: '',
+        street: '',
+        postalCode: '',
+      },
+      summary: {
+        comment: '',
+      },
+      setOrderData: (payload: SetOrderDataAction) => set({
+        order: payload,
+      }),
+    }), {
+      name: "order",
+      version: 1,
+    }
+  )
+)
