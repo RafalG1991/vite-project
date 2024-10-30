@@ -12,7 +12,8 @@ type OrderState = {
   },
   summary: {
     comment: string;
-  }
+  },
+  setOrderData: (payload: SetOrderDataAction) => void;
 }
 
 type SetOrderDataAction = {
