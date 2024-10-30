@@ -1,11 +1,16 @@
-import { createFileRoute } from '@tanstack/react-router'
+import {createFileRoute, Link} from '@tanstack/react-router'
+import {PageHeader} from "../components/PageHeader";
 
-function Index() {
+export const Component = () => {
   return (
-    <p>This is Home Page, choose path from menu</p>
+    <>
+      <PageHeader>Begin your process</PageHeader>
+      <p>You can start your order by clicking this button</p>
+      <Link to='/order'>Start order</Link>
+    </>
   )
 }
 
 export const Route = createFileRoute('/')({
-  component: Index,
+  component: Component,
 })
