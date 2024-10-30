@@ -12,6 +12,7 @@
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as UsersImport } from './routes/users'
+import { Route as OrderImport } from './routes/order'
 import { Route as IpImport } from './routes/ip'
 import { Route as WrapperImport } from './routes/_wrapper'
 import { Route as SplatImport } from './routes/$'
@@ -27,6 +28,11 @@ import { Route as WrapperPokemonDeferPokemonNameImport } from './routes/_wrapper
 
 const UsersRoute = UsersImport.update({
   path: '/users',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const OrderRoute = OrderImport.update({
+  path: '/order',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -111,6 +117,13 @@ declare module '@tanstack/react-router' {
       path: '/ip'
       fullPath: '/ip'
       preLoaderRoute: typeof IpImport
+      parentRoute: typeof rootRoute
+    }
+    '/order': {
+      id: '/order'
+      path: '/order'
+      fullPath: '/order'
+      preLoaderRoute: typeof OrderImport
       parentRoute: typeof rootRoute
     }
     '/users': {
@@ -203,6 +216,7 @@ export interface FileRoutesByFullPath {
   '/$': typeof SplatRoute
   '': typeof WrapperRouteWithChildren
   '/ip': typeof IpRoute
+  '/order': typeof OrderRoute
   '/users': typeof UsersRoute
   '/posts': typeof WrapperPostsRouteWithChildren
   '/pokemon/$pokemonName': typeof WrapperPokemonPokemonNameRoute
@@ -217,6 +231,7 @@ export interface FileRoutesByTo {
   '/$': typeof SplatRoute
   '': typeof WrapperRouteWithChildren
   '/ip': typeof IpRoute
+  '/order': typeof OrderRoute
   '/users': typeof UsersRoute
   '/posts': typeof WrapperPostsRouteWithChildren
   '/pokemon/$pokemonName': typeof WrapperPokemonPokemonNameRoute
@@ -232,6 +247,7 @@ export interface FileRoutesById {
   '/$': typeof SplatRoute
   '/_wrapper': typeof WrapperRouteWithChildren
   '/ip': typeof IpRoute
+  '/order': typeof OrderRoute
   '/users': typeof UsersRoute
   '/_wrapper/posts': typeof WrapperPostsRouteWithChildren
   '/_wrapper/pokemon/$pokemonName': typeof WrapperPokemonPokemonNameRoute
@@ -248,6 +264,7 @@ export interface FileRouteTypes {
     | '/$'
     | ''
     | '/ip'
+    | '/order'
     | '/users'
     | '/posts'
     | '/pokemon/$pokemonName'
@@ -261,6 +278,7 @@ export interface FileRouteTypes {
     | '/$'
     | ''
     | '/ip'
+    | '/order'
     | '/users'
     | '/posts'
     | '/pokemon/$pokemonName'
@@ -274,6 +292,7 @@ export interface FileRouteTypes {
     | '/$'
     | '/_wrapper'
     | '/ip'
+    | '/order'
     | '/users'
     | '/_wrapper/posts'
     | '/_wrapper/pokemon/$pokemonName'
@@ -289,6 +308,7 @@ export interface RootRouteChildren {
   SplatRoute: typeof SplatRoute
   WrapperRoute: typeof WrapperRouteWithChildren
   IpRoute: typeof IpRoute
+  OrderRoute: typeof OrderRoute
   UsersRoute: typeof UsersRoute
 }
 
@@ -297,6 +317,7 @@ const rootRouteChildren: RootRouteChildren = {
   SplatRoute: SplatRoute,
   WrapperRoute: WrapperRouteWithChildren,
   IpRoute: IpRoute,
+  OrderRoute: OrderRoute,
   UsersRoute: UsersRoute,
 }
 
@@ -316,6 +337,7 @@ export const routeTree = rootRoute
         "/$",
         "/_wrapper",
         "/ip",
+        "/order",
         "/users"
       ]
     },
@@ -337,6 +359,9 @@ export const routeTree = rootRoute
     },
     "/ip": {
       "filePath": "ip.tsx"
+    },
+    "/order": {
+      "filePath": "order.tsx"
     },
     "/users": {
       "filePath": "users.tsx"
