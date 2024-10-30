@@ -12,6 +12,9 @@
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as UsersImport } from './routes/users'
+import { Route as SummaryImport } from './routes/summary'
+import { Route as SuccessImport } from './routes/success'
+import { Route as ShippingImport } from './routes/shipping'
 import { Route as OrderImport } from './routes/order'
 import { Route as IpImport } from './routes/ip'
 import { Route as WrapperImport } from './routes/_wrapper'
@@ -28,6 +31,21 @@ import { Route as WrapperPokemonDeferPokemonNameImport } from './routes/_wrapper
 
 const UsersRoute = UsersImport.update({
   path: '/users',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const SummaryRoute = SummaryImport.update({
+  path: '/summary',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const SuccessRoute = SuccessImport.update({
+  path: '/success',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const ShippingRoute = ShippingImport.update({
+  path: '/shipping',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -126,6 +144,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof OrderImport
       parentRoute: typeof rootRoute
     }
+    '/shipping': {
+      id: '/shipping'
+      path: '/shipping'
+      fullPath: '/shipping'
+      preLoaderRoute: typeof ShippingImport
+      parentRoute: typeof rootRoute
+    }
+    '/success': {
+      id: '/success'
+      path: '/success'
+      fullPath: '/success'
+      preLoaderRoute: typeof SuccessImport
+      parentRoute: typeof rootRoute
+    }
+    '/summary': {
+      id: '/summary'
+      path: '/summary'
+      fullPath: '/summary'
+      preLoaderRoute: typeof SummaryImport
+      parentRoute: typeof rootRoute
+    }
     '/users': {
       id: '/users'
       path: '/users'
@@ -217,6 +256,9 @@ export interface FileRoutesByFullPath {
   '': typeof WrapperRouteWithChildren
   '/ip': typeof IpRoute
   '/order': typeof OrderRoute
+  '/shipping': typeof ShippingRoute
+  '/success': typeof SuccessRoute
+  '/summary': typeof SummaryRoute
   '/users': typeof UsersRoute
   '/posts': typeof WrapperPostsRouteWithChildren
   '/pokemon/$pokemonName': typeof WrapperPokemonPokemonNameRoute
@@ -232,6 +274,9 @@ export interface FileRoutesByTo {
   '': typeof WrapperRouteWithChildren
   '/ip': typeof IpRoute
   '/order': typeof OrderRoute
+  '/shipping': typeof ShippingRoute
+  '/success': typeof SuccessRoute
+  '/summary': typeof SummaryRoute
   '/users': typeof UsersRoute
   '/posts': typeof WrapperPostsRouteWithChildren
   '/pokemon/$pokemonName': typeof WrapperPokemonPokemonNameRoute
@@ -248,6 +293,9 @@ export interface FileRoutesById {
   '/_wrapper': typeof WrapperRouteWithChildren
   '/ip': typeof IpRoute
   '/order': typeof OrderRoute
+  '/shipping': typeof ShippingRoute
+  '/success': typeof SuccessRoute
+  '/summary': typeof SummaryRoute
   '/users': typeof UsersRoute
   '/_wrapper/posts': typeof WrapperPostsRouteWithChildren
   '/_wrapper/pokemon/$pokemonName': typeof WrapperPokemonPokemonNameRoute
@@ -265,6 +313,9 @@ export interface FileRouteTypes {
     | ''
     | '/ip'
     | '/order'
+    | '/shipping'
+    | '/success'
+    | '/summary'
     | '/users'
     | '/posts'
     | '/pokemon/$pokemonName'
@@ -279,6 +330,9 @@ export interface FileRouteTypes {
     | ''
     | '/ip'
     | '/order'
+    | '/shipping'
+    | '/success'
+    | '/summary'
     | '/users'
     | '/posts'
     | '/pokemon/$pokemonName'
@@ -293,6 +347,9 @@ export interface FileRouteTypes {
     | '/_wrapper'
     | '/ip'
     | '/order'
+    | '/shipping'
+    | '/success'
+    | '/summary'
     | '/users'
     | '/_wrapper/posts'
     | '/_wrapper/pokemon/$pokemonName'
@@ -309,6 +366,9 @@ export interface RootRouteChildren {
   WrapperRoute: typeof WrapperRouteWithChildren
   IpRoute: typeof IpRoute
   OrderRoute: typeof OrderRoute
+  ShippingRoute: typeof ShippingRoute
+  SuccessRoute: typeof SuccessRoute
+  SummaryRoute: typeof SummaryRoute
   UsersRoute: typeof UsersRoute
 }
 
@@ -318,6 +378,9 @@ const rootRouteChildren: RootRouteChildren = {
   WrapperRoute: WrapperRouteWithChildren,
   IpRoute: IpRoute,
   OrderRoute: OrderRoute,
+  ShippingRoute: ShippingRoute,
+  SuccessRoute: SuccessRoute,
+  SummaryRoute: SummaryRoute,
   UsersRoute: UsersRoute,
 }
 
@@ -338,6 +401,9 @@ export const routeTree = rootRoute
         "/_wrapper",
         "/ip",
         "/order",
+        "/shipping",
+        "/success",
+        "/summary",
         "/users"
       ]
     },
@@ -362,6 +428,15 @@ export const routeTree = rootRoute
     },
     "/order": {
       "filePath": "order.tsx"
+    },
+    "/shipping": {
+      "filePath": "shipping.tsx"
+    },
+    "/success": {
+      "filePath": "success.tsx"
+    },
+    "/summary": {
+      "filePath": "summary.tsx"
     },
     "/users": {
       "filePath": "users.tsx"
