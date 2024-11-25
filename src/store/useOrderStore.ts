@@ -22,6 +22,16 @@ type SetOrderDataAction = {
   configuration: string;
 }
 
+type SetShippingDataAction = {
+  city: string;
+  street: string;
+  postalCode: string;
+}
+
+type SetSummaryDataAction = {
+  comment: string;
+}
+
 export const useOrderStore = create<OrderState>()(
   persist(
     set => ({
@@ -39,6 +49,12 @@ export const useOrderStore = create<OrderState>()(
       },
       setOrderData: (payload: SetOrderDataAction) => set({
         order: payload,
+      }),
+      setShippingData: (payload: SetShippingDataAction) => set({
+        shipping: payload,
+      }),
+      setSummaryData: (payload: SetSummaryDataAction) => set({
+        summary: payload,
       }),
     }), {
       name: "order",
