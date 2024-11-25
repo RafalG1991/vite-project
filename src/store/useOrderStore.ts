@@ -15,6 +15,8 @@ type OrderState = {
     comment: string;
   },
   setOrderData: (payload: SetOrderDataAction) => void;
+  setShippingData: (payload: SetShippingDataAction) => void;
+  setSummaryData: (payload: SetSummaryDataAction) => void;
 }
 
 type SetOrderDataAction = {
