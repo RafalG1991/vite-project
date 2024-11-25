@@ -3,9 +3,13 @@ import {useInput} from "../hooks/useInput.ts";
 import {FormEvent} from "react";
 import {useOrderStore} from "../store/useOrderStore.ts";
 import {useShallow} from "zustand/react/shallow";
+import {useNavigate} from "@tanstack/react-router";
 
 export const Shipping = () => {
   const { shipping, setShippingData } = useOrderStore(useShallow(state => ({ shipping: state.shipping, setShippingData: state.setShippingData})));
+
+  const navigate = useNavigate();
+
   const cityInput = useInput(shipping.city);
   const streetInput = useInput(shipping.street);
   const postalCodeInput = useInput(shipping.postalCode);
@@ -17,6 +21,8 @@ export const Shipping = () => {
       street: streetInput.value,
       postalCode: postalCodeInput.value,
     });
+
+    navigate({ to: '/summary' });
   }
 
   return (
