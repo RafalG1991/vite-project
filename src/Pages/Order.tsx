@@ -3,9 +3,13 @@ import {useInput} from "../hooks/useInput.ts";
 import {FormEvent} from "react";
 import {useOrderStore} from "../store/useOrderStore.ts";
 import {useShallow} from "zustand/react/shallow";
+import {useNavigate} from "@tanstack/react-router";
 
 export const Order = () => {
   const { order, setOrderData } = useOrderStore(useShallow(state => ({ order: state.order, setOrderData: state.setOrderData})));
+
+  const navigate = useNavigate();
+
   const titleInput = useInput(order.title);
   const descriptionInput = useInput(order.configuration);
 
@@ -15,6 +19,8 @@ export const Order = () => {
       title: titleInput.value,
       configuration: descriptionInput.value,
     });
+
+    navigate({ to: '/shipping' });
   }
 
   return (
