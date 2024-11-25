@@ -30,6 +30,13 @@ export const Summary = () => {
     <>
       <PageHeader>Summary</PageHeader>
       <p>Please review your order and add comment</p>
+      <div>
+        <h3>Order</h3>
+        <p>{order.title}</p>
+        <p>{order.configuration}</p>
+        <h3>Shipping address</h3>
+        <p>{shipping.street}, {shipping.city} - {shipping.postalCode}</p>
+      </div>
       <form onSubmit={handleSubmit}>
         <div>
           <textarea placeholder="Comment" {...commentInput} />
