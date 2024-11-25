@@ -6,7 +6,12 @@ import {useShallow} from "zustand/react/shallow";
 import {useNavigate} from "@tanstack/react-router";
 
 export const Summary = () => {
-  const { summary, setSummaryData } = useOrderStore(useShallow(state => ({ summary: state.summary, setSummaryData: state.setSummaryData})));
+  const { summary, order, shipping, setSummaryData } = useOrderStore(useShallow(state => ({
+    order: state.order,
+    shipping: state.shipping,
+    summary: state.summary,
+    setSummaryData: state.setSummaryData
+  })));
 
   const navigate = useNavigate();
 
