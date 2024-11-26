@@ -14,6 +14,9 @@ type OrderState = {
   summary: {
     comment: string;
   },
+}
+
+type OrderActions = {
   setOrderData: (payload: SetOrderDataAction) => void;
   setShippingData: (payload: SetShippingDataAction) => void;
   setSummaryData: (payload: SetSummaryDataAction) => void;
@@ -34,7 +37,7 @@ type SetSummaryDataAction = {
   comment: string;
 }
 
-export const useOrderStore = create<OrderState>()(
+export const useOrderStore = create<OrderState & OrderActions>()(
   persist(
     set => ({
       order: {
