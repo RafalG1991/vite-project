@@ -37,21 +37,25 @@ type SetSummaryDataAction = {
   comment: string;
 }
 
+const initialState: OrderState = {
+  order: {
+    title: '',
+    configuration: '',
+  },
+  shipping: {
+    city: '',
+    street: '',
+    postalCode: '',
+  },
+  summary: {
+    comment: '',
+  },
+}
+
 export const useOrderStore = create<OrderState & OrderActions>()(
   persist(
     set => ({
-      order: {
-        title: '',
-        configuration: '',
-      },
-      shipping: {
-        city: '',
-        street: '',
-        postalCode: '',
-      },
-      summary: {
-        comment: '',
-      },
+      ...initialState,
       setOrderData: (payload: SetOrderDataAction) => set({
         order: payload,
       }),
