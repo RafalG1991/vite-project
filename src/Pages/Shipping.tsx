@@ -4,8 +4,10 @@ import {FormEvent} from "react";
 import {useOrderStore} from "../store/useOrderStore.ts";
 import {useShallow} from "zustand/react/shallow";
 import {useNavigate} from "@tanstack/react-router";
+import {useOrderAccess} from "../hooks/useOrderAccess.tsx";
 
 export const Shipping = () => {
+  useOrderAccess('shipping');
   const { shipping, setShippingData } = useOrderStore(useShallow(state => ({ shipping: state.shipping, setShippingData: state.setShippingData})));
 
   const navigate = useNavigate();
