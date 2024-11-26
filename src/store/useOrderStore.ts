@@ -20,6 +20,7 @@ type OrderActions = {
   setOrderData: (payload: SetOrderDataAction) => void;
   setShippingData: (payload: SetShippingDataAction) => void;
   setSummaryData: (payload: SetSummaryDataAction) => void;
+  placeOrder: () => void;
 }
 
 type SetOrderDataAction = {
@@ -65,6 +66,7 @@ export const useOrderStore = create<OrderState & OrderActions>()(
       setSummaryData: (payload: SetSummaryDataAction) => set({
         summary: payload,
       }),
+      placeOrder: () => set(initialState),
     }), {
       name: "order",
       version: 1,
