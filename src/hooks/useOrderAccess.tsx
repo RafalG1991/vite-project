@@ -28,6 +28,12 @@ export const useOrderAccess = (step: 'order' | 'shipping' | 'summary' | 'success
         }
         break;
       }
+      case 'success': {
+        if(!isOrderShippingFilled()) {
+          navigate({to: '/'});
+        }
+        break;
+      }
     }
 
   }, [step]);
