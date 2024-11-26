@@ -10,14 +10,24 @@ export const useOrderAccess = (step: 'order' | 'shipping' | 'summary' | 'success
     return !!order.configuration && !!order.title;
   }
 
-  useEffect(() => {
-    switch(step) {
-      case 'shipping':
-        if(!isOrderStepFilled()) {
-          navigate({to: '/order'});
-          break;
-        }
+  const isOrderShippingFilled = () => {
+    return !!shipping.city && !!shipping.street && !!shipping.postalCode;
+  }
 
+  useEffect(() => {
+    switch (step) {
+      case 'shipping': {
+        if(!isOrderStepFilled()) {
+          navigate({to: '/'});
+        }
+        break;
+      }
+      case 'summary': {
+        if(!isOrderShippingFilled()) {
+          navigate({to: '/'});
+        }
+        break;
+      }
     }
 
   }, [step]);
