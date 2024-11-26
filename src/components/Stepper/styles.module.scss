@@ -1,0 +1,20 @@
+.stepper {
+  display: flex;
+  justify-content: space-around;
+}
+
+.step {
+  display: block;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  background-color: #6f758d;
+  color: #fff;
+  font-size: 0.6rem;
+  align-items: center;
+  justify-content: center;
+
+  &.active {
+    background-color: #365cff;
+  }
+}

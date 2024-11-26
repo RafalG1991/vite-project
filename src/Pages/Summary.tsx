@@ -5,6 +5,7 @@ import {useOrderStore} from "../store/useOrderStore.ts";
 import {useShallow} from "zustand/react/shallow";
 import {useNavigate} from "@tanstack/react-router";
 import {useOrderAccess} from "../hooks/useOrderAccess.tsx";
+import {Stepper} from "../components/Stepper";
 
 export const Summary = () => {
   useOrderAccess('summary');
@@ -30,6 +31,7 @@ export const Summary = () => {
 
   return (
     <>
+      <Stepper step='summary' />
       <PageHeader>Summary</PageHeader>
       <p>Please review your order and add comment</p>
       <div>

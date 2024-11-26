@@ -5,6 +5,7 @@ import {useOrderStore} from "../store/useOrderStore.ts";
 import {useShallow} from "zustand/react/shallow";
 import {useNavigate} from "@tanstack/react-router";
 import {useOrderAccess} from "../hooks/useOrderAccess.tsx";
+import {Stepper} from "../components/Stepper";
 
 export const Shipping = () => {
   useOrderAccess('shipping');
@@ -37,6 +38,7 @@ export const Shipping = () => {
 
   return (
     <>
+      <Stepper step='shipping' />
       <PageHeader>Shipping</PageHeader>
       <p>Please fill your shipping address</p>
       <form onSubmit={handleSubmit}>

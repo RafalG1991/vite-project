@@ -4,6 +4,7 @@ import {FormEvent, useEffect} from "react";
 import {useOrderStore} from "../store/useOrderStore.ts";
 import {useShallow} from "zustand/react/shallow";
 import {useNavigate} from "@tanstack/react-router";
+import {Stepper} from "../components/Stepper";
 
 export const Order = () => {
   const { order, setOrderData } = useOrderStore(useShallow(state => ({ order: state.order, setOrderData: state.setOrderData})));
@@ -32,6 +33,7 @@ export const Order = () => {
 
   return (
     <>
+      <Stepper step='order' />
       <PageHeader>Order</PageHeader>
       <p>Please fill your order configuration</p>
       <form onSubmit={handleSubmit}>
