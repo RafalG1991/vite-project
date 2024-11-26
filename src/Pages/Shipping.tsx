@@ -1,6 +1,6 @@
 import {PageHeader} from "../components/PageHeader";
 import {useInput} from "../hooks/useInput.ts";
-import {FormEvent} from "react";
+import {FormEvent, useEffect} from "react";
 import {useOrderStore} from "../store/useOrderStore.ts";
 import {useShallow} from "zustand/react/shallow";
 import {useNavigate} from "@tanstack/react-router";
@@ -26,6 +26,14 @@ export const Shipping = () => {
 
     navigate({ to: '/summary' });
   }
+
+  useEffect(() => {
+    setShippingData({
+      city: cityInput.value,
+      street: streetInput.value,
+      postalCode: postalCodeInput.value,
+    });
+  }, [cityInput.value, streetInput.value, postalCodeInput]);
 
   return (
     <>
