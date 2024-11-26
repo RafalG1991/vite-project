@@ -1,6 +1,6 @@
 import {PageHeader} from "../components/PageHeader";
 import {useInput} from "../hooks/useInput.ts";
-import {FormEvent} from "react";
+import {FormEvent, useEffect} from "react";
 import {useOrderStore} from "../store/useOrderStore.ts";
 import {useShallow} from "zustand/react/shallow";
 import {useNavigate} from "@tanstack/react-router";
@@ -22,6 +22,13 @@ export const Order = () => {
 
     navigate({ to: '/shipping' });
   }
+
+  useEffect(() => {
+    setOrderData({
+      title: titleInput.value,
+      configuration: descriptionInput.value,
+    });
+  }, [titleInput.value, descriptionInput.value]);
 
   return (
     <>
