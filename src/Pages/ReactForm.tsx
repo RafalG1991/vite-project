@@ -8,7 +8,7 @@ type FormData = {
 export const ReactForm = () => {
   const { register, handleSubmit } = useForm<FormData>();
 
-  const onSubmit = (data: any) => {
+  const onSubmit = (data: FormData) => {
     console.log(data);
   }
 
