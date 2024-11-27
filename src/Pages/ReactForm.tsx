@@ -6,7 +6,7 @@ type FormData = {
 }
 
 export const ReactForm = () => {
-  const { register, handleSubmit } = useForm<FormData>();
+  const { register, handleSubmit, formState: { isValid, errors} } = useForm<FormData>();
 
   const onSubmit = (data: FormData) => {
     console.log(data);
@@ -16,7 +16,7 @@ export const ReactForm = () => {
     <form onSubmit={handleSubmit(onSubmit)}>
       <input {...register('login', { required: true, minLength: 3 })} />
       <input {...register('password')} />
-      <button type="submit">Log in</button>
+      <button type="submit" disabled={!isValid}>Log in</button>
     </form>
   )
 }
