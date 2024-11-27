@@ -15,6 +15,7 @@ export const ReactForm = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <input {...register('login', { required: true, minLength: 3 })} />
+      {errors.login ? <p>This field is required</p> : null}
       <input {...register('password')} />
       <button type="submit" disabled={!isValid}>Log in</button>
     </form>
