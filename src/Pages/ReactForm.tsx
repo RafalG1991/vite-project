@@ -14,7 +14,7 @@ export const ReactForm = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <input {...register('login')} />
+      <input {...register('login', { required: true, minLength: 3 })} />
       <input {...register('password')} />
       <button type="submit">Log in</button>
     </form>
