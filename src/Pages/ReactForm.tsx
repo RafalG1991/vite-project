@@ -12,6 +12,10 @@ export const ReactForm = () => {
     console.log(data);
   }
 
+  const resetForm = () => {
+    reset();
+  }
+
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <input {...register('login', { required: true, minLength: 3 })} />
