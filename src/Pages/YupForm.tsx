@@ -9,12 +9,17 @@ const loginSchema = object({
 type LoginData = InferType<typeof loginSchema>;
 
 export const YupForm = () => {
-  const { register } = useForm();
+  const { register , handleSubmit } = useForm<LoginData>();
+
+  const onSubmit = (data: LoginData) => {
+    console.log(data);
+  }
 
   return (
-    <form>
-      <input type="text"/>
-      <input type="password"/>
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <input type="text" {...register('login')}/>
+      <input type="password" {...register('login')}/>
+      <button type="submit">Submit</button>
     </form>
   )
 }
