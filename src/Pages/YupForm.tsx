@@ -1,4 +1,5 @@
 import {InferType, object, string} from "yup";
+import {useForm} from "react-hook-form";
 
 const loginSchema = object({
   login: string().required().min(5),
@@ -8,5 +9,12 @@ const loginSchema = object({
 type LoginData = InferType<typeof loginSchema>;
 
 export const YupForm = () => {
-  return null;
+  const { register } = useForm();
+
+  return (
+    <form>
+      <input type="text"/>
+      <input type="password"/>
+    </form>
+  )
 }
