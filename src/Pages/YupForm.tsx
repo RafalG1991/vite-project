@@ -2,6 +2,8 @@ import {InferType, object, string} from "yup";
 import {useForm} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup";
 import {Button, TextField} from "@mui/material";
+import {Modal} from "../Modal.tsx";
+import {ModalPortal} from "../ModalPortal.tsx";
 
 const loginSchema = object({
   login: string().required().min(5),
@@ -20,10 +22,14 @@ export const YupForm = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <TextField type="text" {...register('login')} />
-      <TextField type="password" {...register('password')} />
-      <Button type="submit">Submit</Button>
-    </form>
+    <>
+      <Modal>Modal</Modal>
+      <ModalPortal>ModalPortal</ModalPortal>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <TextField type="text" {...register('login')} />
+        <TextField type="password" {...register('password')} />
+        <Button type="submit">Submit</Button>
+      </form>
+    </>
   )
 }
