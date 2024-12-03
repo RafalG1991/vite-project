@@ -4,6 +4,7 @@ import {yupResolver} from "@hookform/resolvers/yup";
 import {Button, TextField} from "@mui/material";
 import {Modal} from "../Modal.tsx";
 import {ModalPortal} from "../ModalPortal.tsx";
+import {InfoCard} from "../components/InfoCard/InfoCard.tsx";
 
 const loginSchema = object({
   login: string().required().min(5),
@@ -30,6 +31,7 @@ export const YupForm = () => {
         <TextField type="password" {...register('password')} />
         <Button type="submit">Submit</Button>
       </form>
+      <InfoCard title="title" description="Some description" label="Button label"/>
     </>
   )
 }
