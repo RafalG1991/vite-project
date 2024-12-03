@@ -31,7 +31,7 @@ export const YupForm = () => {
         <TextField type="password" {...register('password')} />
         <Button type="submit">Submit</Button>
       </form>
-      <InfoCard title="title" description="Some description" label="Button label"/>
+      <InfoCard item={{title:"title", description:"Some description", label:"Button label"}} />
     </>
   )
 }
