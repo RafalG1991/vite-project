@@ -34,15 +34,15 @@ export const YupForm = () => {
         <Button type="submit">Submit</Button>
       </form>
       <InfoCard item={{title:"title", description:"Some description", label:"Button label"}}>
-        <Title title="title"/>
-        <Description description="Description" />
+        <Title />
+        <Description />
         <Button />
       </InfoCard>
       <InfoCard item={{description:"Some description"}}>
-        <Description description="Description no 2" />
+        <Description />
       </InfoCard>
       <InfoCard item={{title:"title"}} >
-        <Title title="Another title" />
+        <Title />
       </InfoCard>
     </>
   )
