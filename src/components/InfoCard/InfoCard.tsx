@@ -1,3 +1,5 @@
+import styles from './styles.module.scss';
+
 export type InfoCardProps = {
   title: string;
   description: string;
@@ -6,13 +8,13 @@ export type InfoCardProps = {
 
 export const InfoCard = ({title, description, label}: InfoCardProps) => {
   return (
-    <div>
-      <p>{title}</p>
+    <div className={styles.infoBox}>
+      <p className={styles.title}>{title}</p>
       <div>
-        <p>{description}</p>
+        <p className={styles.description}>{description}</p>
       </div>
       <div>
-        <button>{label}</button>
+        <button className={styles.button}>{label}</button>
       </div>
     </div>
   )
