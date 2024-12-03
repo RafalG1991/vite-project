@@ -15,12 +15,12 @@ export const InfoCard = ({
 }: InfoCardProps) => {
   return (
     <div className={styles.infoBox}>
-      <p className={styles.title}>{title}</p>
+      {title ? <p className={styles.title}>{title}</p> : null}
       <div>
-        <p className={styles.description}>{description}</p>
+        {description ? <p className={styles.description}>{description}</p> : null}
       </div>
       <div>
-        <button className={styles.button}>{label}</button>
+        {label ? <button className={styles.button}>{label}</button> : null}
       </div>
     </div>
   )
