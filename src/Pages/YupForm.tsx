@@ -5,6 +5,8 @@ import {Button, TextField} from "@mui/material";
 import {Modal} from "../Modal.tsx";
 import {ModalPortal} from "../ModalPortal.tsx";
 import {InfoCard} from "../components/InfoCard/InfoCard.tsx";
+import {Title} from "../components/InfoCard/components/Title";
+import {Description} from "../components/InfoCard/components/Description/Description.tsx";
 
 const loginSchema = object({
   login: string().required().min(5),
@@ -31,9 +33,17 @@ export const YupForm = () => {
         <TextField type="password" {...register('password')} />
         <Button type="submit">Submit</Button>
       </form>
-      <InfoCard item={{title:"title", description:"Some description", label:"Button label"}} />
-      <InfoCard item={{title:"title", description:"Some description"}} />
-      <InfoCard item={{title:"title"}} />
+      <InfoCard item={{title:"title", description:"Some description", label:"Button label"}}>
+        <Title title="title"/>
+        <Description description="Description" />
+        <Button />
+      </InfoCard>
+      <InfoCard item={{description:"Some description"}}>
+        <Description description="Description no 2" />
+      </InfoCard>
+      <InfoCard item={{title:"title"}} >
+        <Title title="Another title" />
+      </InfoCard>
     </>
   )
 }
