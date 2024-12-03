@@ -1,4 +1,5 @@
 import styles from './styles.module.scss';
+import {Title} from "./components/Title/Title.tsx";
 
 export type InfoCardProps = {
   item: {
@@ -15,13 +16,7 @@ export const InfoCard = ({
 }: InfoCardProps) => {
   return (
     <div className={styles.infoBox}>
-      {title ? <p className={styles.title}>{title}</p> : null}
-      <div>
-        {description ? <p className={styles.description}>{description}</p> : null}
-      </div>
-      <div>
-        {label ? <button className={styles.button}>{label}</button> : null}
-      </div>
+
     </div>
   )
 }
