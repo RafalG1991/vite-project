@@ -13,6 +13,7 @@ export const Foo = () => {
     console.log("USE EFFECT", ref.current);
     if(!ref.current) return;
     const { width, height, x, y} = ref.current?.getBoundingClientRect();
+    setConfig({width, height, x, y});
   }, []);
 
   useLayoutEffect(() => {
