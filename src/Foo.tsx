@@ -1,7 +1,13 @@
-import {useEffect, useLayoutEffect, useRef} from "react";
+import {useEffect, useLayoutEffect, useRef, useState} from "react";
 
 export const Foo = () => {
   const ref = useRef<HTMLHeadingElement>(null);
+  const [config, setConfig] = useState<{width: number, height: number, x: number, y: number}>({
+    x: 0,
+    y: 0,
+    width: 200,
+    height: 100,
+  });
 
   useEffect(() => {
     console.log("USE EFFECT", ref.current);
