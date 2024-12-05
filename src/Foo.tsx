@@ -4,7 +4,9 @@ export const Foo = () => {
   const ref = useRef<HTMLHeadingElement>(null);
 
   useEffect(() => {
-    console.log("USE EFFECT");
+    console.log("USE EFFECT", ref.current);
+    if(!ref.current) return;
+    const { width, height, x, y} = ref.current?.getBoundingClientRect();
   }, []);
 
   useLayoutEffect(() => {
