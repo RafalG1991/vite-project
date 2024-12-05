@@ -25,10 +25,10 @@ export const Foo = () => {
       <h1 ref={ref}>Foo Component</h1>
       <div style={{
         position: 'absolute',
-        left: 0,
-        top: 0,
-        height: 200,
-        width: 400,
+        left: config.x,
+        top: config.y,
+        height: config.height,
+        width: config.width,
         zIndex: -1,
         background: 'blue'
       }}/>
