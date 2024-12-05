@@ -1,18 +1,15 @@
-type Props = {
-  elements: {
-    id: number,
-    value: number,
-  }[]
-}
+import {useEffect, useLayoutEffect} from "react";
 
-const Foo = (props: Props) => {
+export const Foo = () => {
+  useEffect(() => {
+
+  }, []);
+
+  useLayoutEffect(() => {
+
+  }, []);
+
   return (
-    <ul>
-      {props.elements.map(el => (
-        <li key={el.id}>{el.id} - {el.value}</li>
-      ))}
-    </ul>
+    <h1>Foo Component</h1>
   )
 }
-
-export { Foo };
