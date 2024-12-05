@@ -1,6 +1,8 @@
-import {useEffect, useLayoutEffect} from "react";
+import {useEffect, useLayoutEffect, useRef} from "react";
 
 export const Foo = () => {
+  const ref = useRef<HTMLHeadingElement>(null);
+
   useEffect(() => {
     console.log("USE EFFECT");
   }, []);
@@ -11,7 +13,7 @@ export const Foo = () => {
 
   return (
     <div>
-      <h1>Foo Component</h1>
+      <h1 ref={ref}>Foo Component</h1>
       <div style={{
         position: 'absolute',
         left: 0,
