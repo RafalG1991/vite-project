@@ -1,5 +1,4 @@
 import {useEffect, useLayoutEffect} from "react";
-import zIndex from "@mui/material/styles/zIndex";
 
 export const Foo = () => {
   useEffect(() => {
