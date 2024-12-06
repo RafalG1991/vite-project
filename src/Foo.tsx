@@ -10,15 +10,18 @@ export const Foo = () => {
     active: false,
   });
 
-  useEffect(() => {
-    console.log("USE EFFECT", ref.current);
-    if(!ref.current) return;
-    const { width, height, x, y} = ref.current?.getBoundingClientRect();
-    setConfig({width, height, x, y, active: true});
-  }, []);
+  // useEffect(() => {
+  //   console.log("USE EFFECT", ref.current);
+  //   if(!ref.current) return;
+  //   const { width, height, x, y} = ref.current?.getBoundingClientRect();
+  //   setConfig({width, height, x, y, active: true});
+  // }, []);
 
   useLayoutEffect(() => {
     console.log("USE LAYOUT EFFECT");
+    if(!ref.current) return;
+    const { width, height, x, y} = ref.current?.getBoundingClientRect();
+    setConfig({width, height, x, y, active: true});
   }, []);
 
   return (
@@ -34,6 +37,5 @@ export const Foo = () => {
         background: config.active ? 'red' : 'blue'
       }}/>
     </div>
-
   )
 }
