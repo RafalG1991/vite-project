@@ -1,8 +1,10 @@
+import {memo} from "react";
+
 type BarProps = {
   value: string;
 }
 
-export const Bar = ({value}: BarProps) => {
+export const Bar = memo(({value}: BarProps) => {
   let val = 0;
   for(let i = 0; i < 1000000; i++) {
     val += val;
@@ -11,4 +13,4 @@ export const Bar = ({value}: BarProps) => {
   return (
     <h1>{value}</h1>
   )
-}
+});
