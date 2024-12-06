@@ -1,4 +1,5 @@
 import {useEffect, useLayoutEffect, useRef, useState} from "react";
+import {Bar} from "./Bar.tsx";
 
 export const Foo = () => {
   const ref = useRef<HTMLHeadingElement>(null);
@@ -38,6 +39,7 @@ export const Foo = () => {
         background: config.active ? 'red' : 'blue'
       }}/>
       <input type="text" onChange={(e) => setValue(e.target.value)}/>
+      <Bar value={value} />
     </div>
   )
 }
