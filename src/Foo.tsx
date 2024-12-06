@@ -9,6 +9,7 @@ export const Foo = () => {
     height: 100,
     active: false,
   });
+  const [value, setValue] = useState('');
 
   // useEffect(() => {
   //   console.log("USE EFFECT", ref.current);
@@ -36,6 +37,7 @@ export const Foo = () => {
         zIndex: -1,
         background: config.active ? 'red' : 'blue'
       }}/>
+      <input type="text" onChange={(e) => setValue(e.target.value)}/>
     </div>
   )
 }
