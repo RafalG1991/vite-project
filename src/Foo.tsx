@@ -1,4 +1,4 @@
-import {useEffect, useLayoutEffect, useRef, useState} from "react";
+import {useEffect, useLayoutEffect, useRef, useState, useDeferredValue} from "react";
 import {Bar} from "./Bar.tsx";
 
 export const Foo = () => {
@@ -11,6 +11,7 @@ export const Foo = () => {
     active: false,
   });
   const [value, setValue] = useState('');
+  const deferredValue = useDeferredValue(value);
 
   // useEffect(() => {
   //   console.log("USE EFFECT", ref.current);
@@ -39,7 +40,7 @@ export const Foo = () => {
         background: config.active ? 'red' : 'blue'
       }}/>
       <input type="text" onChange={(e) => setValue(e.target.value)}/>
-      <Bar value={value} />
+      <Bar value={deferredValue} />
     </div>
   )
 }
