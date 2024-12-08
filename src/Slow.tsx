@@ -18,9 +18,12 @@ export const Slow = () => {
   }
 
   return (
-    <ul>
-      {elements.map(el => <li key={el.id}>{el.label}</li>)}
-    </ul>
+    <>
+      <ul>
+        {elements.map(el => <li key={el.id}>{el.label}</li>)}
+      </ul>
+      <button onClick={getData}>Get data</button>
+    </>
   )
 
 }
