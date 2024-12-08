@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useState, useTransition} from "react";
 
 const randomize = () => {
   const elements: {label: string, id: number}[] = [];
@@ -13,10 +13,13 @@ const randomize = () => {
 export const Slow = () => {
   const [elements, setElements] = useState<{label: string, id: number}[]>([]);
   const [counter, setCounter] = useState(0);
+  const [isPending, startTransition] = useTransition();
 
   const getData = () => {
     setCounter(prev => prev+1);
-    setElements(randomize());
+    startTransition(() => {
+      setElements(randomize());
+    });
   }
 
   return (
