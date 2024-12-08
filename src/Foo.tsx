@@ -1,5 +1,6 @@
 import {useEffect, useLayoutEffect, useRef, useState, useDeferredValue} from "react";
 import {Bar} from "./Bar.tsx";
+import {useActive} from "./hooks/useActive.ts";
 
 export const Foo = () => {
   const ref = useRef<HTMLHeadingElement>(null);
@@ -12,6 +13,7 @@ export const Foo = () => {
   });
   const [value, setValue] = useState('');
   const deferredValue = useDeferredValue(value);
+  const active = useActive();
 
   // useEffect(() => {
   //   console.log("USE EFFECT", ref.current);
@@ -30,6 +32,7 @@ export const Foo = () => {
   return (
     <div>
       <h1 ref={ref}>Foo Component</h1>
+      <h2>{active}</h2>
       <div style={{
         position: 'absolute',
         left: config.x,
