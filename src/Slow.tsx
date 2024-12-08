@@ -1,15 +1,21 @@
 import {useState} from "react";
 
 const randomize = () => {
-  const elements = [];
+  const elements: {label: string, id: number}[] = [];
 
   for(let i=0; i <= 1000; i++) {
     elements.push({label: `element - ${i}`, id: i});
   }
+
+  return elements;
 }
 
 export const Slow = () => {
   const [elements, setElements] = useState<{label: string, id: number}[]>([]);
+
+  const getData = () => {
+    setElements(randomize());
+  }
 
   return (
     <ul>
