@@ -25,9 +25,9 @@ export const Slow = () => {
   return (
     <>
       <h1>{counter}</h1>
-      <ul>
+      {isPending ? <ul>
         {elements.map(el => <li key={el.id}>{el.label}</li>)}
-      </ul>
+      </ul> : <h2>Loading...</h2>}
       <button onClick={getData}>Get data</button>
     </>
   )
