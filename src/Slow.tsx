@@ -12,13 +12,16 @@ const randomize = () => {
 
 export const Slow = () => {
   const [elements, setElements] = useState<{label: string, id: number}[]>([]);
+  const [counter, setCounter] = useState(0);
 
   const getData = () => {
+    setCounter(prev => prev+1);
     setElements(randomize());
   }
 
   return (
     <>
+      <h1>{counter}</h1>
       <ul>
         {elements.map(el => <li key={el.id}>{el.label}</li>)}
       </ul>
