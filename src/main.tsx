@@ -167,7 +167,9 @@ declare module '@tanstack/react-router' {
   }
 }
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
+ReactDOM.createRoot(document.getElementById('root')!, {
+  identifierPrefix: 'lorem-ipsum',
+}).render(
   <React.StrictMode>
     <RouterProvider router={router} context={{ value: 10}}/>
     {/*<RouterProvider router={router3} />*/}
