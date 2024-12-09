@@ -11,7 +11,7 @@ export const DataList = <T extends ReactNode>({ items, callback, RowComponent }:
     <ul>
       {items.map((item, index) => (
           !!RowComponent ?
-            <RowComponent />
+            <RowComponent key={index}/>
             : <li key={index}>
             {item}
             <button onClick={() => callback(item)}>Click</button>
