@@ -12,6 +12,14 @@ describe('Counter', () => {
 
     expect(counterElement).toBeInTheDocument();
   })
+
+  it('custom initial value should be rendered', () => {
+    render(<Counter initialValue={100}/>);
+    const counterElement = screen.getAllByTestId('counter-value');
+
+    expect(counterElement).toHaveTextContent('/^100$/');
+  })
+
   it('should increment the counter after clicking the button', async () => {
     render(<Counter />);
     const counterElement = screen.getByTestId('counter-value');
