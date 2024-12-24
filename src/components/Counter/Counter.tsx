@@ -9,8 +9,8 @@ export const Counter = () => {
 
   return (
     <div>
-      <h1>{counter}</h1>
-      <button onClick={increment}>Increment</button>
+      <h1 data-testid='counter-value'>{counter}</h1>
+      <button data-testid='counter-button' onClick={increment}>Increment</button>
     </div>
   )
 }
