@@ -9,6 +9,7 @@ export default defineConfig({
   plugins: [TanStackRouterVite({}), react()],
   server: {
     port: 4000,
+    host: true,
   },
   build: {
     outDir: 'build',
